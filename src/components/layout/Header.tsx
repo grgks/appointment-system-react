@@ -153,16 +153,16 @@ export const Header: React.FC<HeaderProps> = ({ onLogout }) => {
                                                 <p className="text-xs text-gray-600">{user?.role}</p>
                                             </div>
 
-                                            <button
-                                                className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-white/50 transition-colors flex items-center space-x-2"
-                                                onClick={() => {
-                                                    console.log('Navigate to profile');
-                                                    setShowUserMenu(false);
-                                                }}
-                                            >
-                                                <User className="w-4 h-4" />
-                                                <span>Προφίλ</span>
-                                            </button>
+                                            {/*<button*/}
+                                            {/*    className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-white/50 transition-colors flex items-center space-x-2"*/}
+                                            {/*    onClick={() => {*/}
+                                            {/*        console.log('Navigate to profile');*/}
+                                            {/*        setShowUserMenu(false);*/}
+                                            {/*    }}*/}
+                                            {/*>*/}
+                                            {/*    <User className="w-4 h-4" />*/}
+                                            {/*    <span>Προφίλ</span>*/}
+                                            {/*</button>*/}
 
                                             {/*button settings menu*/}
                                             {/*<button*/}
