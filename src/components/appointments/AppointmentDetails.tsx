@@ -18,10 +18,10 @@ const AppointmentDetails: React.FC<AppointmentDetailsProps> = ({
                                                                }) => {
     const getStatusVariant = (status: string) => {
         switch (status) {
-            case 'Confirmed': return 'success';
-            case 'Pending': return 'warning';
-            case 'Completed': return 'success';
-            case 'Cancelled': return 'danger';
+            case 'confirmed': return 'success';
+            case 'pending': return 'warning';
+            case 'completed': return 'success';
+            case 'cancelled': return 'danger';
             default: return 'default';
         }
     };
