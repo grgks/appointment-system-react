@@ -26,7 +26,7 @@ const DashboardPage: React.FC = () => {
 
     //Navigation  for appointments
     const handleAppointmentClick = (appointmentId: number) => {
-        navigate(`/appointments/${appointmentId}/view`); // Added /view to match route
+        navigate(`/appointments/${appointmentId}/view`);
     };
 
     const handleEditAppointment = (appointmentId: number) => {
