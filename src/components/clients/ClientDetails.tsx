@@ -105,11 +105,11 @@ const ClientDetails: React.FC<ClientDetailsProps> = ({ client, onEdit, onDelete 
                 </Card>
 
                 {/* address */}
-                <Card title="Contact & Location" className="h-fit">
+                <Card title="Διεύθυνση" className="h-fit">
                     <div className="space-y-4">
                         {client.personalInfo?.address && (
                             <div>
-                                <label className="block text-sm font-medium text-gray-700">Διεύθυνση</label>
+                                <label className="block text-sm font-medium text-gray-700">Οδός</label>
                                 <div className="mt-1 flex items-center text-gray-900">
                                     <MapPin className="w-4 h-4 mr-2 text-gray-400" />
                                     {client.personalInfo.address}
