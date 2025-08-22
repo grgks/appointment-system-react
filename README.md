@@ -1,4 +1,9 @@
-# WorkApp - Appointment Management System Frontend
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><img src="./public/WorkApp2.png" alt="WorkApp Logo" width="100"></td>
+<td><h3 style="margin: 0; font-weight: bold;"> Appointment/Client Management System Frontend</h3></td>
+</tr>
+</table>
 
 This project initially started as a **university assignment** and has since evolved into a modern, scalable React-based frontend application for managing client appointments and user administration.  
 Built with React 19, TypeScript, and TailwindCSS, it provides a clean interface for appointment scheduling, client management, and administrative tasks.  
@@ -29,7 +34,7 @@ Upcoming enhancements include **user profile settings**, advanced **email remind
 - Appointment history and notes
 - Chronological sorting by proximity
 
-### 👤 User Profile Settings *(upcoming)*
+### 👤 User Profile Settings *(planned)*
 - Personal information management
 - Change password & security settings
 - Notification preferences
@@ -106,6 +111,24 @@ This frontend integrates with the [System Management REST API](https://github.co
 - Comprehensive error handling
 - Request/response data transformation
 
+## Project Structure
+```
+src/
+├── components/            # React components organized by feature
+│   ├── appointments/      # Appointment-related components
+│   ├── calendar/          # Calendar components
+│   ├── clients/           # Client management components
+│   ├── common/            # Shared components
+│   ├── dashboard/         # Dashboard widgets
+│   ├── forms/             # Form components
+│   ├── layout/            # Layout components (Header, Footer)
+│   └── ui/                # Base UI components (Button, Card, etc.)
+├── hooks/                 # Custom React hooks
+├── pages/                 # Page-level components
+├── services/              # API service layer
+├── types/                 # TypeScript type definitions
+└── utils/                 # Utility functions and constants
+```
 ## Authentication Flow
 
 1. **Registration**: Users register through the client registration endpoint
