@@ -145,11 +145,6 @@ For complete API documentation, visit the backend Swagger UI at:
 - Context providers for global state
 - No localStorage usage (as per platform restrictions)
 
-## Related Repositories
-
-- **Backend API**: [System Management REST API](https://github.com/grgks/system-management-RestAPI)
-- **API Documentation**: Available at [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) when backend is running
-
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
@@ -162,5 +157,23 @@ For support and questions:
 - Review the Swagger UI for endpoint details
 
 ---
-
 **Note**: This frontend application requires the backend API to be running. Please refer to the [backend repository](https://github.com/grgks/system-management-RestAPI) for setup instructions.
+
+---
+🙏 Acknowledgments
+
+- *[Coding Factory AUEB](https://codingfactory.aueb.gr/)* for providing excellent training in modern web development technologies and inspiring this project as part of my graduation thesis
+- React & TypeScript communities for comprehensive documentation and best practices
+- TailwindCSS team for the excellent utility-first CSS framework
+- Vite team for the lightning-fast build tool that powers our development
+- Lucide React for beautiful, consistent iconography
+- All contributors who help improve this appointment management system
+- The open source ecosystem that makes modern web development possible
+
+⭐ Support This Project
+If you find WorkApp helpful for your appointment management needs, please consider giving it a star! ⭐
+Your support helps:
+
+📈 Increase project visibility for others who might benefit
+🚀 Motivate continued development and new features
+🤝 Build a stronger community around the project
