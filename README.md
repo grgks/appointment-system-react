@@ -1,6 +1,10 @@
 # WorkApp - Appointment Management System Frontend
 
-A modern React-based frontend application for managing client appointments and user administration. Built with React 19, TypeScript, and TailwindCSS, featuring a clean interface for appointment scheduling, client management, and administrative tasks.
+This project initially started as a **university assignment** and has since evolved into a modern, scalable React-based frontend application for managing client appointments and user administration.  
+Built with React 19, TypeScript, and TailwindCSS, it provides a clean interface for appointment scheduling, client management, and administrative tasks.  
+
+The architecture is designed with scalability in mind, allowing easy extension to new entities and features.  
+Upcoming enhancements include **user profile settings**, advanced **email reminder workflows**, and additional administrative tools.
 
 ## Features
 
@@ -20,10 +24,16 @@ A modern React-based frontend application for managing client appointments and u
 ### 📅 Appointment Management
 - Intuitive appointment scheduling interface
 - Status tracking (Pending, Confirmed, Completed, Cancelled)
-- Email reminder system with status monitoring
+- Email reminder system with status monitoring *(in progress)*
 - Date and time management with validation
 - Appointment history and notes
 - Chronological sorting by proximity
+
+### 👤 User Profile Settings *(upcoming)*
+- Personal information management
+- Change password & security settings
+- Notification preferences
+- Integration with email reminders
 
 ### 🔐 Authentication & Security
 - JWT token-based authentication
@@ -48,11 +58,10 @@ A modern React-based frontend application for managing client appointments and u
 - **HTTP Client**: Axios 1.11.0
 - **Icons**: Lucide React 0.536.0
 - **Form Handling**: TailwindCSS Forms
-- **Development**: ESLint, PostCSS, Autoprefixer
 
 ## Prerequisites
 
-- Node.js 18.0 higher
+- Node.js 18.0 or higher
 - npm package manager
 - Running backend API (see [Backend Repository](https://github.com/grgks/system-management-RestAPI))
 
@@ -63,7 +72,6 @@ A modern React-based frontend application for managing client appointments and u
 git clone https://github.com/grgks/appointment-system-react.git
 cd appointment-system-react
 ```
-
 ### 2. Install Dependencies
 ```bash
 npm install
@@ -93,7 +101,7 @@ This frontend integrates with the [System Management REST API](https://github.co
 
 ### API Integration Features
 - RESTful API communication via Axios
-- JWT token management and automatic refresh
+- JWT token management
 - Role-based endpoint access
 - Comprehensive error handling
 - Request/response data transformation
@@ -104,7 +112,6 @@ This frontend integrates with the [System Management REST API](https://github.co
 2. **Login**: Authenticate with username/password to receive JWT token
 3. **Token Storage**: JWT token stored securely for API requests
 4. **Protected Routes**: Role-based access to different application areas
-5. **Token Refresh**: Automatic token refresh on expiration
 
 ## Available Scripts
 
