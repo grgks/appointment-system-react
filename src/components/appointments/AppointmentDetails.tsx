@@ -101,7 +101,7 @@ const AppointmentDetails: React.FC<AppointmentDetailsProps> = ({
 
                         <div>
                             <label className="block text-sm font-medium text-gray-700">Υπηρεσίες</label>
-                            {/* toDo it shows notes field for now <p className="mt-1 text-gray-900">{appointment.service || 'Γενικά ραντεβού'}</p>*/}
+                            {/* NOTE: it shows notes field for now <p className="mt-1 text-gray-900">{appointment.service || 'Γενικά ραντεβού'}</p>*/}
                             <p className="mt-1 text-gray-900">{ 'Γενικά ραντεβού'}</p>
                         </div>
 
