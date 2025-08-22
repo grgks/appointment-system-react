@@ -1,9 +1,10 @@
 import React from 'react';
 import { Heart, Mail, Phone, MapPin, Github, Twitter, Linkedin } from 'lucide-react';
+import {useNavigate} from "react-router-dom";
 
 export const Footer: React.FC = () => {
     const currentYear = new Date().getFullYear();
-
+    const navigate = useNavigate();
     return (
         <footer className="mt-auto border-t" style={{
             background: 'linear-gradient(135deg, #F8F6FF 0%, #F0EBFF 50%, #E8DDFF 100%)',
@@ -54,22 +55,41 @@ export const Footer: React.FC = () => {
                         <h4 className="text-sm font-semibold text-gray-800 mb-4">Γρήγοροι Σύνδεσμοι</h4>
                         <ul className="space-y-2">
                             <li>
-                                <button className="text-sm text-gray-600 hover:text-blue-600 transition-colors">
+                                <button
+                                    onClick={() => {
+                                        navigate('/dashboard');
+                                        window.scrollTo(0,0);
+                                    }}
+                                    className="text-sm text-gray-600 hover:text-blue-600 transition-colors">
                                     Αρχική Σελίδα
                                 </button>
                             </li>
                             <li>
-                                <button className="text-sm text-gray-600 hover:text-blue-600 transition-colors">
+                                <button
+                                    onClick={() => {
+                                        navigate('/clients');
+                                        window.scrollTo(0,0);
+                                    }}
+                                    className="text-sm text-gray-600 hover:text-blue-600 transition-colors">
                                     Διαχείριση Πελατών
                                 </button>
                             </li>
                             <li>
-                                <button className="text-sm text-gray-600 hover:text-blue-600 transition-colors">
+                                <button
+                                    onClick={() => {
+                                        navigate('/appointments/create');
+                                        window.scrollTo(0,0);
+                                    }}
+                                    className="text-sm text-gray-600 hover:text-blue-600 transition-colors">
                                     Προγραμματισμός Ραντεβού
                                 </button>
                             </li>
                             <li>
-                                <button className="text-sm text-gray-600 hover:text-blue-600 transition-colors">
+                                <button
+                                    onClick={() => {
+                                        alert('Η σελίδα είναι υπό κατασκευή!Θα είναι διαθέσιμη σύντομα.');
+                                    }}
+                                    className="text-sm text-gray-600 hover:text-blue-600 transition-colors">
                                     Αναφορές & Στατιστικά
                                 </button>
                             </li>
@@ -110,13 +130,25 @@ export const Footer: React.FC = () => {
 
                         {/* Links */}
                         <div className="flex space-x-6">
-                            <button className="text-sm text-gray-600 hover:text-blue-600 transition-colors">
+                            <button
+                                onClick={() => {
+                                    alert('Η σελίδα είναι υπό κατασκευή!Θα είναι διαθέσιμη σύντομα.');
+                                }}
+                                className="text-sm text-gray-600 hover:text-blue-600 transition-colors">
                                 Πολιτική Απορρήτου
                             </button>
-                            <button className="text-sm text-gray-600 hover:text-blue-600 transition-colors">
+                            <button
+                                onClick={() => {
+                                    alert('Η σελίδα είναι υπό κατασκευή!Θα είναι διαθέσιμη σύντομα.');
+                                }}
+                                className="text-sm text-gray-600 hover:text-blue-600 transition-colors">
                                 Όροι Χρήσης
                             </button>
-                            <button className="text-sm text-gray-600 hover:text-blue-600 transition-colors">
+                            <button
+                                onClick={() => {
+                                    alert('Η σελίδα είναι υπό κατασκευή!Θα είναι διαθέσιμη σύντομα.');
+                                }}
+                                className="text-sm text-gray-600 hover:text-blue-600 transition-colors">
                                 Cookies
                             </button>
                         </div>
