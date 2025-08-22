@@ -185,7 +185,7 @@ For support and questions:
 ---
 🙏 Acknowledgments
 
-- *[Coding Factory AUEB](https://codingfactory.aueb.gr/)* for providing excellent training in modern web development technologies and inspiring this project as part of my graduation thesis
+- *[Coding Factory AUEB](https://codingfactory.aueb.gr/)* for providing excellent training in modern web development technologies and inspiring this project  as part of my capstone project
 - React & TypeScript communities for comprehensive documentation and best practices
 - TailwindCSS team for the excellent utility-first CSS framework
 - Vite team for the lightning-fast build tool that powers our development
