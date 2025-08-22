@@ -36,7 +36,7 @@ const AppointmentDetails: React.FC<AppointmentDetailsProps> = ({
                             <Calendar className="w-8 h-8" />
                         </div>
                         <div>
-                            <h2 className="text-2xl font-bold text-gray-900">{appointment.clientName}</h2>
+                            <h2 className="text-2xl font-bold text-gray-900">{appointment.clientName} </h2>
                             <p className="text-gray-500">ID ραντεβού: {appointment.id}</p>
                             <div className="flex items-center space-x-2 mt-2">
                                 <Badge variant={getStatusVariant(appointment.status)}>
