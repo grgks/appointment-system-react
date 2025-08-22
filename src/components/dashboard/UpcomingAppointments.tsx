@@ -18,6 +18,36 @@ const UpcomingAppointments: React.FC<UpcomingAppointmentsProps> = ({
                                                                        onEditAppointment,
                                                                        onViewAll
                                                                    }) => {
+    const sortedAppointments = React.useMemo(() => {
+        return [...appointments].sort((a, b) => {
+            const parseDateTime = (dateStr: string, timeStr: string) => {
+                try {
+                    const cleanTime = timeStr.replace('at ', '');
+
+                    const fullDateTimeStr = `${dateStr} ${cleanTime}`;
+
+                    let date = new Date(fullDateTimeStr);
+
+                    if (isNaN(date.getTime())) {
+                        // Μετατροπή από DD/MM/YYYY σε MM/DD/YYYY format
+                        const dateParts = dateStr.split('/');
+                        if (dateParts.length === 3) {
+                            const reformattedDate = `${dateParts[1]}/${dateParts[0]}/${dateParts[2]}`;
+                            date = new Date(`${reformattedDate} ${cleanTime}`);
+                        }
+                    }
+                    return date.getTime();
+                } catch (error) {
+                    console.warn('Error parsing date:', dateStr, timeStr, error);
+                    return 0;
+                }
+            };
+            const timeA = parseDateTime(a.date, a.time);
+            const timeB = parseDateTime(b.date, b.time);
+
+            return timeA - timeB;
+        });
+    }, [appointments]);
     if (loading) {
         return (
             <Card title="Επόμενα Ραντεβού">
@@ -39,7 +69,7 @@ const UpcomingAppointments: React.FC<UpcomingAppointmentsProps> = ({
     return (
         <Card
             title="Επόμενα Ραντεβού"
-            subtitle={`${appointments.length} scheduled`}
+            subtitle={`${sortedAppointments.length} scheduled`}
             action={
                 onViewAll ? (
                     <button
@@ -53,12 +83,12 @@ const UpcomingAppointments: React.FC<UpcomingAppointmentsProps> = ({
             }
         >
             <div className="space-y-4">
-                {appointments.length === 0 ? (
+                {sortedAppointments.length === 0 ? (
                     <div className="text-center py-8 text-gray-500">
                         Κανένα Επόμενο Ραντεβού
                     </div>
                 ) : (
-                    appointments.slice(0, 5).map((appointment) => (
+                    sortedAppointments.slice(0, 5).map((appointment) => (
                         <div
                             key={appointment.id}
                             className="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow cursor-pointer group"

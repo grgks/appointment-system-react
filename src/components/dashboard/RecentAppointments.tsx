@@ -20,6 +20,34 @@ const RecentAppointments: React.FC<RecentAppointmentsProps> = ({
                                                                    onEditAppointment,
                                                                    onViewAll
                                                                }) => {
+    const sortedAppointments = React.useMemo(() => {
+        return [...appointments].sort((a, b) => {
+            const parseDateTime = (dateStr: string, timeStr: string) => {
+                try {
+                    const cleanTime = timeStr.replace('at ', '');
+                    const fullDateTimeStr = `${dateStr} ${cleanTime}`;
+                    let date = new Date(fullDateTimeStr);
+                    if (isNaN(date.getTime())) {
+                        const dateParts = dateStr.split('/');
+                        if (dateParts.length === 3) {
+                            const reformattedDate = `${dateParts[1]}/${dateParts[0]}/${dateParts[2]}`;
+                            date = new Date(`${reformattedDate} ${cleanTime}`);
+                        }
+                    }
+                    return date.getTime();
+                } catch (error) {
+                    console.warn('Error parsing date:', dateStr, timeStr, error);
+                    return 0;
+                }
+            };
+
+            const timeA = parseDateTime(a.date, a.time);
+            const timeB = parseDateTime(b.date, b.time);
+
+            return timeA - timeB;
+        });
+    }, [appointments]);
+
     if (loading) {
         return (
             <Card title="Πρόσφατα Ραντεβού">
@@ -41,7 +69,7 @@ const RecentAppointments: React.FC<RecentAppointmentsProps> = ({
     return (
         <Card
             title="Πρόσφατα Ραντεβού"
-            subtitle={`${appointments.length} appointments`}
+            subtitle={`${sortedAppointments.length} appointments`}
             action={
                 onViewAll ? (
                     <button
@@ -55,12 +83,12 @@ const RecentAppointments: React.FC<RecentAppointmentsProps> = ({
             }
         >
             <div className="space-y-4">
-                {appointments.length === 0 ? (
+                {sortedAppointments.length === 0 ? (
                     <div className="text-center py-8 text-gray-500">
                         Κανένα Πρόσφατο Ραντεβού
                     </div>
                 ) : (
-                    appointments.slice(0, 5).map((appointment) => (
+                    sortedAppointments.slice(0, 5).map((appointment) => (
                         <div
                             key={appointment.id}
                             className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer group"
