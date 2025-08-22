@@ -115,7 +115,8 @@ This frontend integrates with the [System Management REST API](https://github.co
 ## API Documentation
 
 For complete API documentation, visit the backend Swagger UI at:
-`http://localhost:8080/swagger-ui.html`
+[http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) when backend is running
+
 
 ## Development Guidelines
 
@@ -140,7 +141,7 @@ For complete API documentation, visit the backend Swagger UI at:
 ## Related Repositories
 
 - **Backend API**: [System Management REST API](https://github.com/grgks/system-management-RestAPI)
-- **API Documentation**: Available at `http://localhost:8080/swagger-ui.html` when backend is running
+- **API Documentation**: Available at [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) when backend is running
 
 ## License
 
