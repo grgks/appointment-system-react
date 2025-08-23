@@ -178,7 +178,7 @@ const AppointmentForm: React.FC<AppointmentFormProps> = (props) => {
                     <div className="space-y-4">
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">
-                                {mode === 'create' ? 'Select Client' : 'Client'} {mode === 'create' && <span className="text-red-500">*</span>}
+                                {mode === 'create' ? 'Επιλογή Πελάτη' : 'Client'} {mode === 'create' && <span className="text-red-500">*</span>}
                             </label>
                             {mode === 'edit' && isEditMode(props) ? (
                                 //Show client name as readonly
