@@ -162,7 +162,7 @@ const AppointmentDetails: React.FC<AppointmentDetailsProps> = ({
             </div>
 
             {/* System Information */}
-            <Card title="Πλροφορίες Συστήματος">
+            <Card title="Πληροφορίες Συστήματος">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {appointment.createdAt && (
                         <div>
