@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, Clock, User, Plus } from 'lucide-react';
+import {ChevronLeft, ChevronRight, Calendar as CalendarIcon, Clock, User, Plus, X} from 'lucide-react';
 import { appointmentService } from '../../services/appointmentService';
 import Button from '../ui/Button/Button';
 import Badge from '../ui/Badge';
@@ -274,35 +274,49 @@ const Calendar: React.FC<CalendarProps> = ({
 
                             {/* Appointments */}
                             <div className="space-y-1">
-                                {day.appointments.slice(0, 3).map((appointment) => (
-                                    <div
-                                        key={appointment.id}
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            onAppointmentClick?.(appointment);
-                                        }}
-                                        className="p-1 rounded text-xs bg-blue-100 hover:bg-blue-200 transition-colors cursor-pointer"
-                                        title={`${appointment.clientName} - ${formatTime(appointment.dateTime)}`}
-                                    >
-                                        <div className="flex items-center space-x-1">
-                                            <Clock className="w-3 h-3 text-blue-600" />
-                                            <span className="font-medium text-blue-800 truncate">
-                                                {formatTime(appointment.dateTime)}
-                                            </span>
-                                        </div>
-                                        <div className="flex items-center space-x-1 mt-0.5">
-                                            <User className="w-3 h-3 text-gray-500" />
-                                            <span className="text-gray-700 truncate">
-                                                {appointment.clientName}
-                                            </span>
-                                        </div>
-                                        <Badge
-                                            variant={getStatusColor(appointment.status) as any}
+                                {day.appointments.slice(0, 3).map((appointment) => {
+                                    const appointmentDate = new Date(appointment.dateTime);
+                                    const today = new Date();
+                                    today.setHours(0, 0, 0, 0);
+                                    const isPastAppointment = appointmentDate < today;
+
+                                    return (
+                                        <div
+                                            key={appointment.id}
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                onAppointmentClick?.(appointment);
+                                            }}
+                                            className="relative p-1 rounded text-xs bg-blue-100 hover:bg-blue-200 transition-colors cursor-pointer"
+                                            title={`${appointment.clientName} - ${formatTime(appointment.dateTime)}`}
                                         >
-                                            {appointment.status}
-                                        </Badge>
-                                    </div>
-                                ))}
+                                            {/* X για παλιά ραντεβού */}
+                                            {isPastAppointment && (
+                                                <div className="absolute inset-0 flex items-center justify-center bg-red-500/20 rounded z-10 pointer-events-none">
+                                                    <X className="w-8 h-8 text-red-600/70" strokeWidth={3} />
+                                                </div>
+                                            )}
+
+                                            <div className="flex items-center space-x-1">
+                                                <Clock className="w-3 h-3 text-blue-600" />
+                                                <span className="font-medium text-blue-800 truncate">
+                                                    {formatTime(appointment.dateTime)}
+                                                </span>
+                                            </div>
+                                            <div className="flex items-center space-x-1 mt-0.5">
+                                                <User className="w-3 h-3 text-gray-500" />
+                                                <span className="text-gray-700 truncate">
+                                                    {appointment.clientName}
+                                                </span>
+                                            </div>
+                                            <Badge
+                                                variant={getStatusColor(appointment.status) as any}
+                                            >
+                                                {appointment.status}
+                                            </Badge>
+                                        </div>
+                                    );
+                                })}
 
                                 {day.appointments.length > 3 && (
                                     <div className="text-xs text-gray-500 text-center">
