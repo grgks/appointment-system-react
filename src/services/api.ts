@@ -28,10 +28,26 @@ api.interceptors.response.use(
     (response) => response,
     (error) => {
         if (error.response?.status === 401) {
-            console.log('API: 401 Unauthorized - clearing session');
-            // Token expired or invalid - clear sessionStorage
+            console.log('API: 401 Unauthorized - received');
+            //check constraint errors - no logout
+            if (error.isConstraintError || error.isDeleteError) {
+                console.log('API: Constraint violation error - not logging out');
+                return Promise.reject(error);
+            }
+
+            // check DELETE request  client endpoint
+            const url = error.config?.url || '';
+            const method = error.config?.method?.toLowerCase() || '';
+
+            if (method === 'delete' && url.includes('/clients/')) {
+                console.log('API: Delete client constraint error - not logging out');
+                return Promise.reject(error);
+            }
+
+            // 401 errors (auth issues)
+            console.log('API: Authentication error - clearing session');
             sessionStorage.removeItem(STORAGE_KEYS.TOKEN);
-            sessionStorage.removeItem(STORAGE_KEYS.USER);
+            sessionStorage.removeUser(STORAGE_KEYS.USER);
 
             // Redirect to login page
             window.location.href = '/login';
