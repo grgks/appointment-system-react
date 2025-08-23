@@ -69,7 +69,7 @@ const UpcomingAppointments: React.FC<UpcomingAppointmentsProps> = ({
     return (
         <Card
             title="Επόμενα Ραντεβού"
-            subtitle={`${sortedAppointments.length} scheduled`}
+            subtitle={`${sortedAppointments.length} προγραμματισμένα`}
             action={
                 onViewAll ? (
                     <button

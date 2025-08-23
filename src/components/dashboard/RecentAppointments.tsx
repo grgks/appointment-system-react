@@ -69,7 +69,7 @@ const RecentAppointments: React.FC<RecentAppointmentsProps> = ({
     return (
         <Card
             title="Πρόσφατα Ραντεβού"
-            subtitle={`${sortedAppointments.length} appointments`}
+            subtitle={`${sortedAppointments.length} ραντεβού`}
             action={
                 onViewAll ? (
                     <button
