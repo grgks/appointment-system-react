@@ -54,13 +54,30 @@ const ClientViewPage: React.FC = () => {
 
         const clientName = `${client.personalInfo?.firstName} ${client.personalInfo?.lastName}`;
 
-        if (window.confirm(`Είσαι σίγουρος οτι θέλεις να διαγράψεις τον πελάτη "${clientName}"? Αυτή η επιλογή δεν μπορεί να αναιρεθεί.`)) {
+        if (window.confirm(`Είσαι σίγουρος ότι θέλεις να διαγράψεις τον πελάτη "${clientName}"? Αυτή η επιλογή δεν μπορεί να αναιρεθεί.`)) {
             try {
                 await clientService.deleteClient(client.id!);
-                alert(`Client "${clientName}" Επιτυχής Διαγραφή.`);
+                alert(`Ο πελάτης "${clientName}" διαγράφηκε επιτυχώς.`);
                 navigate('/clients');
             } catch (err: any) {
-                alert(`Λάθος στη Διαγραφή Πελάτη: ${err.message}`);
+                console.error('Delete client error:', err);
+
+                // Έλεγχος αν είναι 401 με dependency constraint
+                if (err.response?.status === 401) {
+                    // εμποδίζει το axios interceptor να κάνει logout
+                    err.isDeleteError = true;
+                    alert(`Δεν μπορείς να διαγράψεις τον πελάτη "${clientName}" επειδή έχει ενεργά ραντεβού.\\n\n Πρέπει πρώτα να διαγράψεις όλα τα ραντεβού του πελάτη.`);
+                    return;
+                }
+
+                // Άλλα errors
+                if (err.response?.status === 409) {
+                    alert(`Δεν μπορείς να διαγράψεις τον πελάτη "${clientName}" επειδή έχει συνδεδεμένα δεδομένα (ραντεβού). Διάγραψε πρώτα τα ραντεβού του.`);
+                    return;
+                }
+
+                // Generic error
+                alert(`Λάθος στη διαγραφή πελάτη: ${err.message || 'Άγνωστο λάθος'}`);
             }
         }
     };

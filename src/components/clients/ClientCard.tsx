@@ -59,7 +59,7 @@ const ClientCard: React.FC<ClientCardProps> = ({ client, onView, onEdit, onDelet
                                     className="w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-50 flex items-center space-x-2"
                                 >
                                     <Eye className="w-4 h-4" />
-                                    <span>Δες λεπτομέρειες</span>
+                                    <span>Δες Λεπτομέρειες</span>
                                 </button>
                                 <button
                                     onClick={() => {
