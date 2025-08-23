@@ -132,7 +132,7 @@ export const clientService = {
             return transformClientFromBackend(response.data);
         } catch (error: any) {
             console.error('ClientService: Update client error:', error);
-            throw new Error(error.response?.data?.description || 'Failed to update client');
+            throw new Error(error.response?.data?.description || 'Λάθος στην ενημέρωση πελάτη' );
         }
     },
 
@@ -145,7 +145,15 @@ export const clientService = {
             console.log('ClientService: Client deleted:', id);
         } catch (error: any) {
             console.error('ClientService: Delete client error:', error);
-            throw new Error(error.response?.data?.description || 'Failed to delete client');
+            if (error.response?.status === 401) {
+                error.isConstraintError = true;
+                throw new Error('Δεν μπορείς να διαγράψεις τον πελάτη επειδή έχει ενεργά ραντεβού. Διάγραψε πρώτα όλα τα ραντεβού του πελάτη.');
+            }
+
+            if (error.response?.status === 409) {
+                throw new Error('Δεν μπορείς να διαγράψεις τον πελάτη επειδή έχει συνδεδεμένα δεδομένα. Διάγραψε πρώτα τα ραντεβού του.');
+            }
+            throw new Error(error.response?.data?.description || 'Αποτυχία διαγραφής πελάτη');
         }
     },
 
