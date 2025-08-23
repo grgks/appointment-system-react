@@ -32,7 +32,10 @@ const DashboardStats: React.FC<DashboardStatsProps> = ({
     return (
         <div className="space-y-6">
             <div className="flex justify-between items-center">
+                <div className="border border-purple-300 rounded-2xl">
                 <h2 className="text-lg font-semibold text-gray-900 px-5">Συνοπτικά Στοιχεία :</h2>
+                <h6 className="text-center">Statistics</h6>
+                </div>
                 {onViewAllAppointments && (
                     <button
                         onClick={onViewAllAppointments}
