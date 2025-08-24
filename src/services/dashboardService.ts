@@ -53,9 +53,10 @@ export const dashboardService = {
                 console.log('Processing recent appointment:', apt);
 
                 //Use the correct fields from AppointmentReadOnlyDTO
-                const firstName = apt.clientName || '';
-                const lastName = apt.clientLastName || '';
-                const clientName = lastName ? `${firstName} ${lastName}`.trim() : firstName || 'Unknown Client';
+                // const firstName = apt.clientName || '';
+                // const lastName = apt.clientLastName || '';
+                // const clientName = lastName ? `${firstName} ${lastName}`.trim() : firstName || 'Unknown Client';
+                const clientName = (apt.clientName || 'Unknown Client').trim();
 
                 const appointmentDate = new Date(apt.appointmentDateTime);
                 const date = appointmentDate.toLocaleDateString('el-GR');
@@ -81,9 +82,10 @@ export const dashboardService = {
             const formattedUpcoming: RecentAppointment[] = upcomingAppointments.slice(0, 5).map((apt: any) => {
                 console.log('Processing upcoming appointment:', apt);
 
-                const firstName = apt.clientName || '';
-                const lastName = apt.clientLastName || '';
-                const clientName = lastName ? `${firstName} ${lastName}`.trim() : firstName || 'Unknown Client';
+                // const firstName = apt.clientName || '';
+                // const lastName = apt.clientLastName || '';
+                // const clientName = lastName ? `${firstName} ${lastName}`.trim() : firstName || 'Unknown Client';
+                const clientName = (apt.clientName || 'Unknown Client').trim();
 
                 const appointmentDate = new Date(apt.appointmentDateTime);
                 const date = appointmentDate.toLocaleDateString('el-GR');
@@ -143,10 +145,10 @@ export const dashboardService = {
             const appointments = response.data.content || [];
 
             return appointments.map((apt: any) => {
-                const firstName = apt.clientName || '';
-                const lastName = apt.clientLastName || '';
-                const clientName = lastName ? `${firstName} ${lastName}`.trim() : firstName || 'Unknown Client';
-
+                // const firstName = apt.clientName || '';
+                // const lastName = apt.clientLastName || '';
+                // const clientName = lastName ? `${firstName} ${lastName}`.trim() : firstName || 'Unknown Client';
+                const clientName = (apt.clientName || 'Unknown Client').trim();
                 return {
                     id: apt.id,
                     clientName,
@@ -167,9 +169,10 @@ export const dashboardService = {
             const appointments = response.data || [];
 
             return appointments.slice(0, 5).map((apt: any) => {
-                const firstName = apt.clientName || '';
-                const lastName = apt.clientLastName || '';
-                const clientName = lastName ? `${firstName} ${lastName}`.trim() : firstName || 'Unknown Client';
+                // const firstName = apt.clientName || '';
+                // const lastName = apt.clientLastName || '';
+                // const clientName = lastName ? `${firstName} ${lastName}`.trim() : firstName || 'Unknown Client';
+                const clientName = (apt.clientName || 'Unknown Client').trim();
 
                 return {
                     id: apt.id,

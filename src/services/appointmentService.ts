@@ -25,7 +25,7 @@ const transformAppointmentFromBackend = (backendAppointment: AppointmentReadOnly
     return {
         id: backendAppointment.id,
         uuid: backendAppointment.uuid,
-        clientName: backendAppointment.clientName || '' .trim(),
+        clientName: (backendAppointment.clientName || '' ).trim(),
         clientLastName: backendAppointment.clientLastName,
         clientPhone: backendAppointment.clientPhone,
         service: backendAppointment.notes || 'Appointment', // Use notes as service or default
