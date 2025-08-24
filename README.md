@@ -27,6 +27,22 @@ Upcoming enhancements include **user profile settings**, advanced **email remind
 ### 🎥**Video Demonstration:** [⬇️ WorkApp Easy Schedule QuickView (46.0MB .mp4)](https://github.com/grgks/appointment-system-react/releases/tag/v1.0.0)
 available under **Assets** --> **download**
 
+## ⚡ Performance
+
+| Metric | Value | Status |
+|--------|-------|---------|
+| **Page Load Time** | 351ms | ✅ Fast |
+| **First Contentful Paint** | 480ms | ✅ Good |
+| **Memory Usage** | 27MB | ✅ Stable |
+| **User Interactions** | 64ms | ✅ Responsive |
+| **API Response Time** | 25-45ms | ✅ Quick |
+| **Database Queries** | 20-30ms | ✅ Efficient |
+| **Authentication** | <10ms | ✅ Instant |
+
+**Summary:** All performance metrics within optimal ranges for smooth user experience.
+
+*Measured using Chrome DevTools in development environment*
+
 ## Features
 
 ### 🏠 Dashboard
