@@ -70,6 +70,11 @@ Upcoming enhancements include **user profile settings**, advanced **email remind
 - npm package manager
 - Running backend API (see [Backend Repository](https://github.com/grgks/system-management-RestAPI))
 
+
+## Video Tutorial: WorkApp Easy Schedule QuickView (46.0 MB)
+- Down to Assets -> download
+
+
 ## Quick Start
 
 ### 1. Clone the Repository
