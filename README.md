@@ -11,6 +11,21 @@ Built with React 19, TypeScript, and TailwindCSS, it provides a clean interface 
 The architecture is designed with scalability in mind, allowing easy extension to new entities and features.  
 Upcoming enhancements include **user profile settings**, advanced **email reminder workflows**, and additional administrative tools.
 
+
+## 📸 Screenshots
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><img src="./public/screenshot2.png" alt="WorkApp Logo" width="200"></td>
+<td><img src="./public/screenshot1.png" alt="WorkApp Logo" width="200"></td>
+<td><img src="./public/screenshot3.png" alt="WorkApp Logo" width="200"></td>
+<td><img src="./public/screenshot4.png" alt="WorkApp Logo" width="200"></td>
+</tr>
+</table>
+
+### **Video Demonstration:** [WorkApp Easy Schedule QuickView](https://github.com/grgks/appointment-system-react/releases/tag/v1.0.0) (46.0 MB)
+- Down to Assets -> download
+
+
 ## Features
 
 ### 🏠 Dashboard
@@ -69,10 +84,6 @@ Upcoming enhancements include **user profile settings**, advanced **email remind
 - Node.js 18.0 or higher
 - npm package manager
 - Running backend API (see [Backend Repository](https://github.com/grgks/system-management-RestAPI))
-
-
-## Video Tutorial: WorkApp Easy Schedule QuickView (46.0 MB)
-- Down to Assets -> download
 
 
 ## Quick Start
