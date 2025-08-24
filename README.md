@@ -19,12 +19,13 @@ Upcoming enhancements include **user profile settings**, advanced **email remind
 <td><img src="./public/screenshot1.png" alt="WorkApp Logo" width="200"></td>
 <td><img src="./public/screenshot3.png" alt="WorkApp Logo" width="200"></td>
 <td><img src="./public/screenshot4.png" alt="WorkApp Logo" width="200"></td>
+<td><img src="./public/responsive1.png" alt="WorkApp Logo" width="150"></td>
+<td><img src="./public/responsive2.png" alt="WorkApp Logo" width="150"></td>
 </tr>
 </table>
 
-### **Video Demonstration:** [WorkApp Easy Schedule QuickView](https://github.com/grgks/appointment-system-react/releases/tag/v1.0.0) (46.0 MB)
-- Down to Assets -> download
-
+### 🎥**Video Demonstration:** [⬇️ WorkApp Easy Schedule QuickView (46.0MB .mp4)](https://github.com/grgks/appointment-system-react/releases/tag/v1.0.0)
+available under **Assets** --> **download**
 
 ## Features
 
