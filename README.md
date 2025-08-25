@@ -11,6 +11,9 @@ Built with React 19, TypeScript, and TailwindCSS, it provides a clean interface 
 The architecture is designed with scalability in mind, allowing easy extension to new entities and features.  
 Upcoming enhancements include **user profile settings**, advanced **email reminder workflows**, and additional administrative tools.
 
+👉 **Note**: This repository contains only the **frontend** part of the system.  
+The corresponding **backend REST API** can be found here:  
+[(WorkApp Backend)](https://github.com/grgks/system-management-RestAPI)
 
 ## 📸 Screenshots
 <table border="0" cellpadding="0" cellspacing="0">
