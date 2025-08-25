@@ -5,7 +5,7 @@
 </tr>
 </table>
 
-This project initially started as a **university assignment** and has since evolved into a modern, scalable React-based frontend application for managing client appointments and user administration.  
+This project initially started as a **capstone project** and has since evolved into a modern, scalable React-based frontend application for managing client appointments and user administration.  
 Built with React 19, TypeScript, and TailwindCSS, it provides a clean interface for appointment scheduling, client management, and administrative tasks.  
 
 The architecture is designed with scalability in mind, allowing easy extension to new entities and features.  
