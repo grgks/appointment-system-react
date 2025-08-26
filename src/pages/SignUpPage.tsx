@@ -5,12 +5,15 @@ import AuthBackground from '../components/common/AuthBackround';
 import AuthCard from '../components/common/AuthCard';
 import SignUpForm from '../components/forms/SignUpForm/SignUpForm';
 import type { SignUpRequest } from '../types/auth';
+import {usePageTitle} from "../hooks/usePageTitle.ts";
 
 const SignUpPage: React.FC = () => {
     const navigate = useNavigate();
     const { login } = useAuth();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+
+    usePageTitle("WorkApp Δημιουργία Λογαριασμού");
 
     const handleSignUp = async (formData: SignUpRequest): Promise<void> => {
         try {

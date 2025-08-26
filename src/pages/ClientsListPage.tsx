@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, {useState, useRef} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { useClients } from '../hooks/useClients';
@@ -9,10 +9,15 @@ import Button from '../components/ui/Button/Button';
 import ClientsList from '../components/clients/ClientsList';
 import ClientSearch from '../components/clients/ClientSearch';
 import type { Client } from '../types/client';
+import {usePageTitle} from "../hooks/usePageTitle.ts";
 
 const ClientsListPage: React.FC = () => {
     const navigate = useNavigate();
     const { logout } = useAuth();
+
+    usePageTitle("WorkApp Λίστα Πελατών");
+
+
 
     // Create ref for the clients list
     const clientsListRef = useRef<HTMLDivElement>(null);

@@ -7,6 +7,7 @@ import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
 import { useAuth } from '../hooks/useAuth';
 import type { CreateClientRequest } from '../types/client';
+import {usePageTitle} from "../hooks/usePageTitle.ts";
 
 const CreateClientPage: React.FC = () => {
     const navigate = useNavigate();
@@ -14,6 +15,8 @@ const CreateClientPage: React.FC = () => {
     const { createClient } = useClients();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+
+    usePageTitle("WorkApp Δημιουργία Πελάτη");
 
     const handleLogout = () => {
         logout();

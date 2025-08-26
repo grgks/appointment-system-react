@@ -7,10 +7,13 @@ import { Footer } from '../components/layout/Footer';
 import Calendar from '../components/calendar/Calendar.tsx';
 import Button from '../components/ui/Button/Button';
 import type { Appointment } from '../types/appointment';
+import {usePageTitle} from "../hooks/usePageTitle.ts";
 
 const CalendarPage: React.FC = () => {
     const navigate = useNavigate();
     const { logout } = useAuth();
+
+    usePageTitle("WorkApp Ημερολόγιο");
 
     const handleLogout = () => {
         logout();

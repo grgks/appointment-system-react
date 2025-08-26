@@ -9,6 +9,7 @@ import Button from '../components/ui/Button/Button';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 import AppointmentDetails from '../components/appointments/AppointmentDetails';
 import type { Appointment } from '../types/appointment';
+import {usePageTitle} from "../hooks/usePageTitle.ts";
 
 const AppointmentViewPage: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -17,6 +18,8 @@ const AppointmentViewPage: React.FC = () => {
     const [appointment, setAppointment] = useState<Appointment | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+
+    usePageTitle("WorkApp Προβολή Ραντεβού");
 
     const handleLogout = () => {
         logout();

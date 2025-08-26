@@ -9,6 +9,7 @@ import Button from '../components/ui/Button/Button';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 import AppointmentForm from '../components/forms/AppointmentForm/AppointmentForm';
 import type { Appointment, UpdateAppointmentRequest } from '../types/appointment';
+import {usePageTitle} from "../hooks/usePageTitle.ts";
 
 const EditAppointmentPage: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -18,6 +19,8 @@ const EditAppointmentPage: React.FC = () => {
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
     const [error, setError] = useState<string | null>(null);
+
+    usePageTitle("WorkApp Ενημέρωση Ραντεβού");
 
     const handleLogout = () => {
         logout();

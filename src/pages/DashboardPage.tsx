@@ -9,11 +9,14 @@ import QuickActions from '../components/dashboard/QuickActions';
 import UpcomingAppointments from '../components/dashboard/UpcomingAppointments';
 import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
+import {usePageTitle} from "../hooks/usePageTitle.ts";
 
 const DashboardPage: React.FC = () => {
     const { data: dashboardData, loading, error, refetch } = useDashboard();
     const { user, logout } = useAuth();
     const navigate = useNavigate();
+
+    usePageTitle("WorkApp Αρχική Σελίδα");
 
     const handleLogout = () => {
         logout();

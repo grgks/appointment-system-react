@@ -9,6 +9,7 @@ import Button from '../components/ui/Button/Button';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 import ClientDetails from '../components/clients/ClientDetails';
 import type { Client } from '../types/client';
+import {usePageTitle} from "../hooks/usePageTitle.ts";
 
 const ClientViewPage: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -17,6 +18,8 @@ const ClientViewPage: React.FC = () => {
     const [client, setClient] = useState<Client | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+
+    usePageTitle("WorkApp Προβολή Πελάτη");
 
     const handleLogout = () => {
         logout();

@@ -8,11 +8,14 @@ import { Footer } from '../components/layout/Footer';
 import Button from '../components/ui/Button/Button';
 import AppointmentsList from '../components/appointments/AppointmentsList';
 import type { Appointment } from '../types/appointment';
+import {usePageTitle} from "../hooks/usePageTitle.ts";
 
 const AppointmentsListPage: React.FC = () => {
     const navigate = useNavigate();
     const { logout } = useAuth();
     const appointmentsListRef = useRef<HTMLDivElement>(null);
+
+    usePageTitle("WorkApp Λίστα Ραντεβού");
 
     const {
         appointments,

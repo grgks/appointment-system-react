@@ -9,6 +9,7 @@ import Button from '../components/ui/Button/Button';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 import EditClientForm from '../components/forms/EditClientForm/EditClientForm';
 import type { Client, UpdateClientRequest } from '../types/client';
+import {usePageTitle} from "../hooks/usePageTitle.ts";
 
 const EditClientPage: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -18,6 +19,8 @@ const EditClientPage: React.FC = () => {
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
     const [error, setError] = useState<string | null>(null);
+
+    usePageTitle("WorkApp Ενημέρωση Πελάτη");
 
     const handleLogout = () => {
         logout();

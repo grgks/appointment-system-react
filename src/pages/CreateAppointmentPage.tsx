@@ -8,12 +8,15 @@ import { Footer } from '../components/layout/Footer';
 import Button from '../components/ui/Button/Button';
 import AppointmentForm from '../components/forms/AppointmentForm/AppointmentForm';
 import type { CreateAppointmentRequest } from '../types/appointment';
+import {usePageTitle} from "../hooks/usePageTitle.ts";
 
 const CreateAppointmentPage: React.FC = () => {
     const navigate = useNavigate();
     const { logout } = useAuth();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+
+    usePageTitle("WorkApp Δημιουργία Ραντεβού");
 
     const handleLogout = () => {
         logout();
