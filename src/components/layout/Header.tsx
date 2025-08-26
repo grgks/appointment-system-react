@@ -240,6 +240,20 @@ export const Header: React.FC<HeaderProps> = ({ onLogout }) => {
                                     <span className="font-medium">{item.label}</span>
                                 </button>
                             ))}
+
+                            {/* Logout button για mobile */}
+                            <div className="border-t border-white/20 pt-2 mt-2">
+                                <button
+                                    onClick={() => {
+                                        handleLogout();
+                                        setShowMobileMenu(false);
+                                    }}
+                                    className="w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-red-200 hover:text-red-100 hover:bg-red-500/20 transition-colors"
+                                >
+                                    <LogOut className="w-5 h-5" />
+                                    <span className="font-medium">Έξοδος</span>
+                                </button>
+                            </div>
                         </nav>
                     </div>
                 )}
