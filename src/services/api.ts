@@ -47,10 +47,12 @@ api.interceptors.response.use(
             // 401 errors (auth issues)
             console.log('API: Authentication error - clearing session');
             sessionStorage.removeItem(STORAGE_KEYS.TOKEN);
-            sessionStorage.removeUser(STORAGE_KEYS.USER);
+            sessionStorage.removeItem(STORAGE_KEYS.USER);
 
-            // Redirect to login page
-            window.location.href = '/login';
+            // delayed Redirect to login page
+            setTimeout(() => {
+                window.location.href = '/login';
+            }, 800);
         }
         return Promise.reject(error);
     }
