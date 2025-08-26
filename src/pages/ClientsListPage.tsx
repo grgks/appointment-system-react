@@ -1,7 +1,7 @@
 import React, {useState, useRef} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
-import { useClients } from '../hooks/useClients';
+import { useClients } from '../hooks/useClients.ts';
 import { useAuth } from '../hooks/useAuth';
 import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
