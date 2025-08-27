@@ -27,7 +27,7 @@ The corresponding **backend REST API** can be found here:
 </tr>
 </table>
 
-### 🎥**Video Demonstration:** [⬇️ WorkApp Easy Schedule QuickView (46.0MB .mp4)](https://github.com/grgks/appointment-system-react/releases/tag/v1.0.0)
+### 🎥**Video Demonstration:** [⬇️ WorkApp Easy Schedule QuickView (43.6MB .mp4)](https://github.com/grgks/appointment-system-react/releases/tag/v1.0.0)
 available under **Assets** --> **download**
 
 ## ⚡ Performance
