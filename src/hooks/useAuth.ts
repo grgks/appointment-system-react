@@ -16,41 +16,63 @@ export const useAuth = (): UseAuthReturn => {
     const [loading, setLoading] = useState<boolean>(true);
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
 
-    // Memoized initialization function
-    const initAuth = useCallback((): void => {
-        try {
-            console.log('Initializing auth...');
+    //  initialization function once
+    useEffect(() => {
+        let isMounted = true; // Cleanup flag
+        let timeoutId: NodeJS.Timeout;
+
+        const initAuth = (): void => {
+            if (timeoutId) clearTimeout(timeoutId);
+
+            // Debounce the auth check
+            timeoutId = setTimeout(() => {
+                if (!isMounted) return;
+                try {
+                console.log('Initializing auth...');
 
             // Use only authService methods - no direct localStorage access
             const currentUser = authService.getCurrentUser();
             const authenticated = authService.isAuthenticated();
 
-            console.log('🔍 Auth check:', { currentUser, authenticated });
+            console.log('Auth check:', { currentUser, authenticated });
 
-            if (currentUser && authenticated) {
-                setUser(currentUser);
-                setIsAuthenticated(true);
-                console.log(' User authenticated:', currentUser.username);
-            } else {
-                setUser(null);
-                setIsAuthenticated(false);
-                console.log('User not authenticated');
+            if (isMounted) {
+                if (currentUser && authenticated) {
+                    setUser(currentUser);
+                    setIsAuthenticated(true);
+                    console.log(' User authenticated:', currentUser.username);
+                } else {
+                    setUser(null);
+                    setIsAuthenticated(false);
+                    console.log('User not authenticated');
+                }
             }
         } catch (error) {
             console.error('Auth initialization error:', error);
-            setUser(null);
-            setIsAuthenticated(false);
-            // Clear corrupted data
-            authService.logout();
-        } finally {
-            setLoading(false);
-        }
-    }, []);
+            if (isMounted) {
 
-    useEffect(() => {
-        // No need to initialize session - sessionStorage handles it automatically
+                setUser(null);
+                setIsAuthenticated(false);
+                // Clear corrupted data
+                authService.logout();
+            }
+        } finally {
+                    if (isMounted) {
+                        setLoading(false);
+                    }
+                }
+            },100);
+    };
+
         initAuth();
-    }, [initAuth]);
+
+            // Cleanup function
+            return () => {
+                isMounted = false;
+                if (timeoutId) clearTimeout(timeoutId);
+            };
+        }, []);
+
 
     const login = async (credentials: LoginRequest): Promise<LoginResponse> => {
         try {
