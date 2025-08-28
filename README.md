@@ -104,8 +104,11 @@ available under **Assets** --> **download**
 - Node.js 18.0 or higher
 - npm package manager
 - Running backend API (see [Backend Repository](https://github.com/grgks/system-management-RestAPI))
+---
 
+⚠️ **Start the backend first!** The frontend won't work without the API running on `http://localhost:8080`
 
+---
 ## Quick Start
 
 ### 1. Clone the Repository
