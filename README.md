@@ -206,6 +206,19 @@ For complete API documentation, visit the backend Swagger UI at:
 - Custom hooks for shared logic
 - Context providers for global state
 - No localStorage usage (as per platform restrictions)
+---
+
+##  📝Notes: 
+> This frontend application requires the backend API to be running. Please refer to the [backend repository](https://github.com/grgks/system-management-RestAPI) for setup instructions.
+> 
+> ℹ️ The current version focuses on the implementation and presentation of the React application.
+> 
+> Future improvements may include:
+> - ✅ Lighthouse reports for automated performance auditing  
+> - ✅ Automated UI tests (React Testing Library / Cypress)  
+> - ✅ CI/CD pipelines (GitHub Actions)  
+> - ✅ Dockerization for a more production-ready deployment  
+---
 
 ## License
 
@@ -219,9 +232,7 @@ For support and questions:
 - Review the Swagger UI for endpoint details
 
 ---
-**Note**: This frontend application requires the backend API to be running. Please refer to the [backend repository](https://github.com/grgks/system-management-RestAPI) for setup instructions.
 
----
 🙏 Acknowledgments
 
 - *[Coding Factory AUEB](https://codingfactory.aueb.gr/)* for providing excellent training in modern web development technologies and inspiring this project  as part of my capstone project
