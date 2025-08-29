@@ -135,8 +135,6 @@ npm run build
 
 ## Backend Integration
 
-This frontend integrates with the [System Management REST API](https://github.com/grgks/system-management-RestAPI) backend:
-
 - **Backend Repository**: [https://github.com/grgks/system-management-RestAPI](https://github.com/grgks/system-management-RestAPI)
 - **API Base URL**: `http://localhost:8080`
 - **Authentication**: JWT Bearer Token
