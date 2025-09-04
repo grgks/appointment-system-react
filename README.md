@@ -5,10 +5,10 @@
 </tr>
 </table>
 
-This project initially started as a **capstone project** and has since evolved into a modern, scalable React-based frontend application for managing client appointments and user administration.  
+This project initially started as the **Capstone Project** for [Coding Factory, Athens University of Economics and Business (AUEB)](https://codingfactory.aueb.gr/) and has since evolved into a modern, scalable React-based frontend application for managing client appointments and user administration.  
 Built with React 19, TypeScript, and TailwindCSS, it provides a clean interface for appointment scheduling, client management, and administrative tasks.  
 
-The architecture is designed with scalability in mind, allowing easy extension to new entities and features.  
+The architecture is designed with scalability in mind, allowing for easy extension to new entities and features.  
 Upcoming enhancements include **user profile settings**, advanced **email reminder workflows**, and additional administrative tools.
 
 👉 **Note**: This repository contains only the **frontend** part of the system.  
