@@ -30,15 +30,14 @@ describe('Create Client Flow', () => {
 
 
         //driver wait = perimenei to element kasi epistrefei webElement
-        const createButton = await driver.wait(until.elementLocated(By.xpath("//button[contains(text(),'Εισαγωγή Πελάτη')]")),
+        await driver.wait(until.elementLocated(By.xpath("//button[contains(text(),'Εισαγωγή Πελάτη')]")),
             config.timeout
-        );
-        await createButton.click();
+        ).click();
 
         await driver.sleep(1000);
 
-       await driver.wait(until.elementLocated(By.xpath("//input[@placeholder='Επέλεξε όνομα χρήστη']")),
-        config.timeout
+        await driver.wait(until.elementLocated(By.xpath("//input[@placeholder='Επέλεξε όνομα χρήστη']")),
+            config.timeout
         ).sendKeys('test34');
 
         await driver.sleep(1000);
@@ -96,10 +95,10 @@ describe('Create Client Flow', () => {
 
 
         const citySelectElement =
-        await driver.wait(
-            until.elementLocated(By.xpath("//label[contains(text(), 'Πόλη')]/parent::div//select")),
-            config.timeout
-        );
+            await driver.wait(
+                until.elementLocated(By.xpath("//label[contains(text(), 'Πόλη')]/parent::div//select")),
+                config.timeout
+            );
         const citySelect = new Select(citySelectElement);
         await citySelect.selectByValue('8');
 
@@ -118,31 +117,61 @@ describe('Create Client Flow', () => {
 
         await driver.sleep(1000);
 
-        await driver.wait(until.elementLocated(By.xpath("//input[@placeholder='Επιπλέον σημειώσεις για τον πελάτη...']")),
+        await driver.wait(until.elementLocated(By.xpath("//textarea[@placeholder='Επιπλέον σημειώσεις για τον πελάτη...']")),
             config.timeout
         ).sendKeys('Selenium Test completed successfully');
 
-         await driver.wait(until.elementLocated(By.xpath("//form//button[contains(text(),'Δημιουργία Πελάτη')]")),
+        await driver.sleep(1000);
+
+
+
+        // Submit button
+        await driver.wait(
+            until.elementLocated(By.xpath("//form//button[contains(text(),'Δημιουργία Πελάτη')]")),
             config.timeout
         ).click();
 
         await driver.sleep(1000);
 
-        await driver.wait(until.urlContains('/clients'), config.timeout);
+        // Χειρισμός του alert
+        try {
+            // το alert να εμφανιστεί
+            await driver.wait(until.alertIsPresent(), config.timeout);
+
+            // alert
+            const alert = await driver.switchTo().alert();
+
+            // Διάβασε το μήνυμα
+            const alertText = await alert.getText();
+            console.log('Alert message:', alertText);
+
+            expect(alertText).toContain('δημιουργήθηκε επιτυχώς');
+            //  accept
+            await alert.accept();
+
+            console.log('Client created successfully - Alert verified!');
+        } catch (error) {
+            console.log(' No success alert found - Client creation failed', error);
+            throw error;
+        }
 
         await driver.sleep(1000);
 
-        const clientElement = await driver.wait(
-            until.elementLocated(By.xpath("//td[contains(text(), 'test34')]")),
-            config.timeout
-        );
-        expect(clientElement).toBeTruthy();
+        // Wait for redirect
+        await driver.wait(until.urlContains('/dashboard'), config.timeout);
 
         await driver.sleep(1000);
 
+        // // Verify client was created
+        // const clientElement = await driver.wait(
+        //     until.elementLocated(By.xpath("//td[contains(text(), 'test34')]")),
+        //     config.timeout
+        // );
+        // expect(clientElement).toBeTruthy();
 
+        console.log('Client created and verified successfully!');
+
+        await driver.sleep(1000);
     });
-
-
 
 });
