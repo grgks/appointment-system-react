@@ -24,6 +24,6 @@ describe('Login Flow', () => {
         const currentUrl = await driver.getCurrentUrl();
         expect(currentUrl).toContain('/dashboard');
 
-        console.log('✅ Login test passed!');
+        console.log(' Login test passed!');
     });
 });
