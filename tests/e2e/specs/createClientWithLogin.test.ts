@@ -4,7 +4,7 @@ import { createDriver, quitDriver } from '../helpers/browser';
 import { login } from '../helpers/authSelenium';
 import {config} from "../config/config";
 
-describe('Create Client Flow', () => {
+describe('Create Client with logged in user Flow', () => {
     let driver: WebDriver;
 
     // Runs before each test
@@ -28,11 +28,17 @@ describe('Create Client Flow', () => {
 
         console.log(' Login test passed!');
 
+        await driver.sleep(1000);
 
         //driver wait = perimenei to element kasi epistrefei webElement
-        await driver.wait(until.elementLocated(By.xpath("//button[contains(text(),'Εισαγωγή Πελάτη')]")),
+        const createButton =await driver.wait(
+            until.elementLocated(By.xpath("//button[contains(text(),'Εισαγωγή Πελάτη')]")),
             config.timeout
-        ).click();
+        );
+        await driver.wait(until.elementIsVisible(createButton), config.timeout);
+        // await driver.wait(until.elementIsEnabled(createButton), config.timeout);
+
+        await createButton.click();
 
         await driver.sleep(1000);
 
