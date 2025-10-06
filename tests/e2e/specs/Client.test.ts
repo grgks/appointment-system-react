@@ -4,7 +4,7 @@ import { createDriver, quitDriver } from '../helpers/browser';
 import { login } from '../helpers/authSelenium';
 import {config} from "../config/config";
 
-describe('Create Client with logged in user Flow', () => {
+describe('Client Tests', () => {
     let driver: WebDriver;
 
     // Runs before each test
@@ -163,21 +163,124 @@ describe('Create Client with logged in user Flow', () => {
 
         await driver.sleep(1000);
 
+
         // Wait for redirect
         await driver.wait(until.urlContains('/dashboard'), config.timeout);
 
         await driver.sleep(1000);
-
-        // // Verify client was created
-        // const clientElement = await driver.wait(
-        //     until.elementLocated(By.xpath("//td[contains(text(), 'test34')]")),
-        //     config.timeout
-        // );
-        // expect(clientElement).toBeTruthy();
-
-        console.log('Client created and verified successfully!');
-
-        await driver.sleep(1000);
     });
 
+
+    test('User can search and edit a client', async () => {
+        await login(driver);
+        await driver.get(`${config.baseUrl}/clients`);
+
+        await driver.sleep(2000);
+
+        // Search for client
+        const searchInput = await driver.wait(
+            until.elementLocated(By.xpath("//input[contains(@placeholder, 'Αναζήτηση')]")),
+            config.timeout
+        );
+        await searchInput.sendKeys('test34');
+        await driver.sleep(1500);
+
+        // Click στο ellipsis menu (τρεις τελείες)
+        const menuButton = await driver.wait(
+            until.elementLocated(By.xpath("//button[.//*[name()='svg' and contains(@class, 'lucide-ellipsis-vertical')]]")),
+            config.timeout
+        );
+        await menuButton.click();
+
+        console.log('Opened menu');
+        await driver.sleep(1000);
+
+        // Click "Επεξεργασία" από το dropdown menu
+        const editOption = await driver.wait(
+            until.elementLocated(By.xpath("//*[contains(text(), 'Ενημέρωση Πελάτη')]")),
+            config.timeout
+        );
+        await editOption.click();
+
+        console.log('Clicked edit option');
+        await driver.sleep(2000);
+
+        // Verify φόρμα επεξεργασίας άνοιξε
+        await driver.wait(
+            until.elementLocated(By.xpath("//button[contains(text(),'Ενημέρωση Πελάτη')] | //button[contains(text(),'Αποθήκευση')]")),
+            config.timeout
+        );
+
+        // Edit notes
+        const notesField = await driver.findElement(By.xpath("//textarea[@placeholder='Επιπλέον σημειώσεις για τον πελάτη...']"));
+        await notesField.clear();
+        await notesField.sendKeys('Selenium Test - Edit successful');
+        await driver.sleep(500);
+
+        // Save
+        await driver.findElement(By.xpath("//button[contains(text(),'Ενημέρωση') or contains(text(),'Αποθήκευση')]")).click();
+        await driver.sleep(2000);
+
+        console.log('Client edited successfully!');
+    });
+
+
+    //test delete
+    test('User can search and delete a client', async () => {
+        await login(driver);
+        await driver.get(`${config.baseUrl}/clients`);
+
+        await driver.sleep(2000);
+
+        // Search for client
+        const searchInput = await driver.wait(
+            until.elementLocated(By.xpath("//input[contains(@placeholder, 'Αναζήτηση')]")),
+            config.timeout
+        );
+        await searchInput.sendKeys('test34');
+        await driver.sleep(1500);
+
+        // Click στο ellipsis menu (τρεις τελείες)
+        const menuButton = await driver.wait(
+            until.elementLocated(By.xpath("//button[.//*[name()='svg' and contains(@class, 'lucide-ellipsis-vertical')]]")),
+            config.timeout
+        );
+        await menuButton.click();
+
+        console.log('Opened menu');
+        await driver.sleep(1000);
+
+        // Click "Επεξεργασία" από το dropdown menu
+        const editOption = await driver.wait(
+            until.elementLocated(By.xpath("//*[contains(text(), 'Διαγραφή Πελάτη')]")),
+            config.timeout
+        );
+        await editOption.click();
+
+        await driver.sleep(1000);
+        console.log('Clicked delete option');
+        await driver.sleep(1000);
+
+        // Handle confirmation alert (1ο alert)
+        await driver.wait(until.alertIsPresent(), config.timeout);
+        let alert = await driver.switchTo().alert();
+        const confirmText = await alert.getText();
+        console.log('Confirmation alert:', confirmText);
+
+        // Verify confirmation message
+        expect(confirmText).toContain('Είσαι σίγουρος');
+        await driver.sleep(1000);
+        // Click OK to confirm delete
+        await alert.accept();
+        await driver.sleep(1000);
+
+        // Handle success alert (2ο alert)
+        await driver.wait(until.alertIsPresent(), config.timeout);
+        alert = await driver.switchTo().alert();
+        const successText = await alert.getText();
+
+        expect(successText).toContain('επιτυχής διαγραφή');
+        await alert.accept();
+
+    });
 });
