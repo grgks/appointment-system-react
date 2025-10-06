@@ -238,7 +238,18 @@ describe('Client Tests', () => {
             config.timeout
         );
         await searchInput.sendKeys('test34');
-        await driver.sleep(1500);
+        await driver.sleep(1000);
+
+        // Click το button "Αναζήτηση"
+        const searchButton = await driver.wait(
+            until.elementLocated(By.xpath("//button[contains(text(), 'Αναζήτηση')]")),
+            config.timeout
+        );
+        await searchButton.click();
+
+        const screenshot = await driver.takeScreenshot();
+        require('fs').writeFileSync('search-debug.png', screenshot, 'base64');
+
 
         // Click στο ellipsis menu (τρεις τελείες)
         const menuButton = await driver.wait(
@@ -250,7 +261,7 @@ describe('Client Tests', () => {
         console.log('Opened menu');
         await driver.sleep(1000);
 
-        // Click "Επεξεργασία" από το dropdown menu
+        // Click "Diagrafi" από το dropdown menu
         const editOption = await driver.wait(
             until.elementLocated(By.xpath("//*[contains(text(), 'Διαγραφή Πελάτη')]")),
             config.timeout

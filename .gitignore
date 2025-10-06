@@ -34,3 +34,8 @@ reports/
 allure-results/
 allure-report/
 test-report.html
+
+# E2E test artifacts
+search-debug.png
+after-search.png
+*.png
