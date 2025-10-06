@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test:e2e": "jest tests/e2e && node tests/e2e/allure-environment.js",
+    "test:clean": "rimraf allure-results reports screenshots",
     "test:e2e:watch": "jest tests/e2e --watch",
     "allure:generate": "allure generate allure-results --clean -o allure-report",
     "allure:open": "allure open allure-report",
