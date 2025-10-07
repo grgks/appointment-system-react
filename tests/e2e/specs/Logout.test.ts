@@ -43,7 +43,7 @@ describe('Logout Test', () => {
 
         await driver.sleep(500);
 
-        //waits until URL contains "/login"
+        //Waits until URL contains "/login"
         await driver.wait(until.urlContains('/login'), config.timeout);
 
         // Verify we're on the login page
