@@ -132,6 +132,51 @@ The application will start on `http://localhost:5173`
 ```bash
 npm run build
 ```
+## 🧪 Testing & QA
+
+This project includes fully implemented automated tests to ensure reliability and quality.
+
+### Unit & Integration Testing
+- Implemented using **Jest** with TypeScript support (`ts-jest`).  
+- Covers core components, services, and utility functions.  
+- Provides code coverage metrics.
+
+### End-to-End (E2E) Testing
+- Implemented using **Jest + Selenium WebDriver** for UI automation.  
+- Covers critical user flows such as login, client management, and appointment scheduling.  
+- Configured with a generous timeout for long-running scenarios.  
+
+### Test Reporting
+- **Allure Reports**: detailed, visual reports in `allure-results` → open via `npm run allure:report`.  
+- **HTML Reports**: generated with `jest-html-reporter` for quick viewing.  
+
+### Quick Start for Tests
+```bash
+# Run unit & integration tests
+npm run test
+
+# Run E2E tests
+npm run test:e2e
+
+# Clean previous test results
+npm run test:clean
+
+# Generate & open Allure report
+npm run allure:report
+```
+## 🧪 Test Screenshots & Reports
+
+### Allure Report Example
+| Dashboard of Test Results |
+|---------------------------|
+| ![Allure Report](./tests/screenshots/allure-dashboard.png) |
+
+### HTML Test Report
+| Sample Test Case Report |
+|------------------------|
+| ![HTML Report](./tests/screenshots/html-test-report.png) |
+
+
 
 ## Backend Integration
 
