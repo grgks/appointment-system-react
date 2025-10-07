@@ -164,19 +164,32 @@ npm run test:clean
 # Generate & open Allure report
 npm run allure:report
 ```
-## 🧪 Test Screenshots & Reports
+## 🧪 Test  Screenshots & Reports 📸
+**Jest**⬇️
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><img src="./public/jest-html-reporter.png" alt="jest-html-reporter" width="200"></td>
+</tr>
+</table>
 
-### Allure Report Example
-| Dashboard of Test Results |
-|---------------------------|
-| ![Allure Report](./tests/screenshots/allure-dashboard.png) |
+**Allure Reports**⬇️
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><img src="./public/allure-report-overview.png" alt="allure-report-overview" width="100"" width="200"></td>
+<td><img src="./public/allure-suites.png" alt="allure-suites" width="100"" width="200"></td>
+<td><img src="./public/allure-behaviors.png" alt="allure-behaviors" width="100"" width="200"></td>
+</tr>
+</table>
 
-### HTML Test Report
-| Sample Test Case Report |
-|------------------------|
-| ![HTML Report](./tests/screenshots/html-test-report.png) |
+**E2E Test Reports**⬇️
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><img src="./public/E2E-Test-Report1.png" alt="allure-report-overview" width="100"" width="200"></td>
+<td><img src="./public/E2E-Test-Report2.png" alt="allure-suites" width="100"" width="200"></td>
+</tr>
+</table>
 
-
+⚠️ **Note**: Make sure the backend API is running to execute E2E tests successfully.
 
 ## Backend Integration
 
@@ -256,7 +269,7 @@ For complete API documentation, visit the backend Swagger UI at:
 > 
 > ℹ️ The current version focuses on the implementation and presentation of the React application.
 > 
-> Future improvements may include:
+>   🔹 Future improvements may include:
 > - ✅ Lighthouse reports for automated performance auditing  
 > - ✅ Automated UI tests (React Testing Library / Cypress)  
 > - ✅ CI/CD pipelines (GitHub Actions)  
