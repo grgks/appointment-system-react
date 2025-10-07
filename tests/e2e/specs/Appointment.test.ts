@@ -106,7 +106,56 @@ describe('Appointment Tests', () => {
 
         // expect(currentUrl).toMatch(/\/appointments\/\d+\/view/); // regex gia validation to path
         await driver.sleep(1000);
+
     });
 
+        test('User can search and delete an appointment', async () => {
+            await login(driver);
+            await driver.get(`${config.baseUrl}/appointments`);
 
+            await driver.sleep(2000);
+
+
+            // Click στο ellipsis menu (τρεις τελείες)
+            const menuButton = await driver.wait(
+                until.elementLocated(By.xpath("//button[.//*[name()='svg' and contains(@class, 'lucide lucide-ellipsis-vertical w-5 h-5 text-gray-500')]]")),
+                config.timeout
+            );
+            await menuButton.click();
+
+            console.log('Opened menu');
+            await driver.sleep(1000);
+
+            // Click "Διαγραφή" από το dropdown menu
+            const editOption = await driver.wait(
+                until.elementLocated(By.xpath("//button[.//*[name()='svg' and contains(@class, 'lucide lucide-trash2 lucide-trash-2 w-4 h-4')]]")),
+                config.timeout
+            );
+            await editOption.click();
+
+            await driver.sleep(1000);
+            console.log('Clicked delete option');
+            await driver.sleep(1000);
+
+            // Handle confirmation alert (1ο alert)
+            await driver.wait(until.alertIsPresent(), config.timeout);
+            let alert = await driver.switchTo().alert();
+            const confirmText = await alert.getText();
+            console.log('Confirmation alert:', confirmText);
+
+            // Verify confirmation message
+            expect(confirmText).toContain('Είσαι σίγουρος');
+            await driver.sleep(1000);
+            // Click OK to confirm delete
+            await alert.accept();
+            await driver.sleep(1000);
+
+            // Handle success alert (2ο alert)
+            await driver.wait(until.alertIsPresent(), config.timeout);
+            alert = await driver.switchTo().alert();
+            const successText = await alert.getText();
+
+            expect(successText).toContain('Ραντεβού διαγράφηκε επιτυχώς');
+            await alert.accept();
+        });
 });
