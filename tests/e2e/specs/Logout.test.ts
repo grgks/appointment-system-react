@@ -34,7 +34,7 @@ describe('Logout Test', () => {
         await driver.sleep(1000);
 
 
-        //finds exit button
+        //Finds exit button
         const exitButton = await driver.wait(
             until.elementLocated(By.xpath("//button[.//*[name()='svg' and contains(@class, 'lucide lucide-log-out w-4 h-4')]]")),
             config.timeout
