@@ -24,7 +24,7 @@ describe('Logout Test', () => {
         await driver.sleep(1000);
 
 
-        //finds dropdown menu
+        //Finds dropdown menu
         const menuButton = await driver.wait(
             until.elementLocated(By.xpath("//button[.//*[name()='svg' and contains(@class, 'lucide lucide-chevron-down w-4 h-4')]]")),
             config.timeout
