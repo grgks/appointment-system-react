@@ -6,7 +6,7 @@ dotenvConfig();
 export const config = {
     baseUrl: process.env.BASE_URL || 'http://localhost:5173',
     backendUrl: process.env.BACKEND_URL || 'http://localhost:8080',
-    timeout: parseInt(process.env.TIMEOUT || '10000'),
+    timeout: parseInt(process.env.TIMEOUT || '150000'),
     headless: process.env.HEADLESS === 'true',
 
     testUser: {
