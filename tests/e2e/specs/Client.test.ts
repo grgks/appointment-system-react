@@ -261,7 +261,7 @@ describe('Client Tests', () => {
         console.log('Opened menu');
         await driver.sleep(1000);
 
-        // Click "Diagrafi" από το dropdown menu
+        // Click "Διαγραφή" από το dropdown menu
         const editOption = await driver.wait(
             until.elementLocated(By.xpath("//*[contains(text(), 'Διαγραφή Πελάτη')]")),
             config.timeout
