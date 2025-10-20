@@ -13,7 +13,7 @@ interface UseClientsReturn {
     pageSize: number;
     createClient: (clientData: CreateClientRequest) => Promise<Client>;
     updateClient: (id: number, clientData: Partial<Client>) => Promise<Client>;
-    deleteClient: (id: number) => Promise<void>;
+    deleteClient: (id: number) => Promise<{ selfDelete: boolean }>;
     searchClients: (query: string) => Promise<Client[]>;
     loadClients: (page?: number, size?: number) => Promise<void>;
     changePage: (page: number) => Promise<void>;
@@ -120,15 +120,15 @@ export const useClients = (
         }
     }, []);
 
-    const deleteClient = useCallback(async (id: number): Promise<void> => {
+    const deleteClient = useCallback(async (id: number): Promise<{ selfDelete: boolean }> => {
         try {
-            console.log('Clients: Deleting client...', id);
+            //console.log('Clients: Deleting client...', id);
             setLoading(true);
             setError(null);
 
-            await clientService.deleteClient(id);
+            const result = await clientService.deleteClient(id); // <-- αυτό επιστρέφει { selfDelete: boolean }
 
-            console.log('Clients: Client deleted successfully');
+            //console.log('Clients: Client deleted successfully');
 
             // Remove client from local state
             setClients(prev => prev.filter(client => client.id !== id));
@@ -138,15 +138,16 @@ export const useClients = (
                 ...prev,
                 totalElements: prev.totalElements - 1
             }));
+
+            return result; // basic for working self-delete
         } catch (err: any) {
-            console.error('Clients: Delete error:', err);
+            //console.error('Clients: Delete error:', err);
             setError(err.message || 'Αποτυχία Διαγραφής Πελάτη');
             throw err;
         } finally {
             setLoading(false);
         }
     }, []);
-
     const searchClients = useCallback(async (query: string): Promise<Client[]> => {
         try {
             console.log('Clients: Searching clients...', query);

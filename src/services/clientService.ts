@@ -136,24 +136,26 @@ export const clientService = {
         }
     },
 
-    async deleteClient(id: number): Promise<void> {
+    async deleteClient(id: number): Promise<{ selfDelete: boolean }> {
         try {
-            console.log('ClientService: Deleting client:', id);
+            const response = await api.delete<{
+                message: string;
+                clientId: number;
+                selfDelete: boolean;
+                timestamp: string;
+            }>(`${ENDPOINTS.CLIENTS.DELETE}/${id}`);
 
-            await api.delete(`${ENDPOINTS.CLIENTS.DELETE}/${id}`);
+            if (response.data.selfDelete) {
+                //console.log('SELF-DELETE! REDIRECTING...');
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+            }
+            // Return selfDelete flag so the component can handle redirect
+            return { selfDelete: response.data.selfDelete };
 
-            console.log('ClientService: Client deleted:', id);
         } catch (error: any) {
-            console.error('ClientService: Delete client error:', error);
-            if (error.response?.status === 401) {
-                error.isConstraintError = true;
-                throw new Error('Δεν μπορείς να διαγράψεις τον πελάτη επειδή έχει ενεργά ραντεβού. Διάγραψε πρώτα όλα τα ραντεβού του πελάτη.');
-            }
-
-            if (error.response?.status === 409) {
-                throw new Error('Δεν μπορείς να διαγράψεις τον πελάτη επειδή έχει συνδεδεμένα δεδομένα. Διάγραψε πρώτα τα ραντεβού του.');
-            }
-            throw new Error(error.response?.data?.description || 'Αποτυχία διαγραφής πελάτη');
+            //console.error('DELETE ERROR:', error);
+            throw error;
         }
     },
 

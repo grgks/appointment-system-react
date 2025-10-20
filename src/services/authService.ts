@@ -55,6 +55,10 @@ export const authService = {
         sessionStorage.removeItem(STORAGE_KEYS.TOKEN);
         sessionStorage.removeItem(STORAGE_KEYS.USER);
         console.log('AuthService: Session storage cleared');
+
+        //clear Authorization header
+        delete api.defaults.headers.common['Authorization'];
+        console.log('AuthService: Session storage & axios headers cleared');
     },
 
     getCurrentUser(): User | null {

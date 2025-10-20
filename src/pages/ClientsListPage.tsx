@@ -69,14 +69,24 @@ const ClientsListPage: React.FC = () => {
 
     const handleDelete = async (client: Client) => {
         const clientName = `${client.personalInfo?.firstName} ${client.personalInfo?.lastName}`;
+       // console.log('handleDelete called for:', client.id, clientName);
 
-        if (window.confirm(`Είσαι σίγουρος ότι θέλεις να διαγράψεις τον πελάτη "${clientName}"? Αυτή η κίνηση δε μπορεί να αναιρεθεί.`)) {
-            try {
-                await deleteClient(client.id!);
-                alert(`Client "${clientName}" επιτυχής διαγραφή.`);
-            } catch (err: any) {
-                alert(`Αποτυχία στη διαγραφή πελάτη: ${err.message}`);
+        if (!window.confirm(`Είσαι σίγουρος ότι θέλεις να διαγράψεις τον πελάτη "${clientName}"? Αυτή η ενέργεια δεν αναιρείται.`)) {
+            //console.log('User cancelled delete');
+            return;
+        }
+        try {
+            const { selfDelete } = await deleteClient(client.id!);
+
+            if (selfDelete) {
+                logout();          // useAuth logout
+                navigate('/login'); // redirect στο login
+            } else {
+                alert(`Ο πελάτης "${clientName}" διαγράφηκε επιτυχώς.`);
             }
+        } catch (err: any) {
+            console.error('Error deleting client:', err);
+            alert(`Αποτυχία στη διαγραφή του πελάτη: ${err.message || err}`);
         }
     };
 
