@@ -143,6 +143,14 @@ export const appointmentService = {
             console.log('AppointmentService: Appointment deleted:', id);
         } catch (error: any) {
             console.error('AppointmentService: Delete appointment error:', error);
+            if (error.response?.status === 403) {
+                throw new Error('No permission to delete this appointment');
+            }
+
+            //Handle 404 Not Found specifically
+            if (error.response?.status === 404) {
+                throw new Error('Appointment not found');
+            }
             throw new Error(error.response?.data?.description || 'Failed to delete appointment');
         }
     },
