@@ -91,6 +91,9 @@ export const appointmentService = {
             return transformedAppointment;
         } catch (error: any) {
             console.error('AppointmentService: Get appointment by ID error:', error);
+            if (error.response?.status === 404) {
+                throw new Error('Appointment not found');
+            }
             throw new Error(error.response?.data?.description || 'Failed to load appointment');
         }
     },
