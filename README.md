@@ -1,3 +1,11 @@
+![React](https://img.shields.io/badge/React-19.1.0-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9.2-blueviolet)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.1.11-green)
+![Vite](https://img.shields.io/badge/Vite-7.0.4-cyan)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+[![Latest Release](https://img.shields.io/github/v/release/grgks/appointment-system-react?color=brightgreen)](https://github.com/grgks/appointment-system-react/releases)
+
+
 <table border="0" cellpadding="0" cellspacing="0">
 <tr>
 <td><img src="./public/WorkApp2.png" alt="WorkApp Logo" width="100"></td>
@@ -10,6 +18,8 @@ Built with React 19, TypeScript, and TailwindCSS, it provides a clean interface 
 
 The architecture is designed with scalability in mind, allowing for easy extension to new entities and features.  
 Upcoming enhancements include **user profile settings**, advanced **email reminder workflows**, and additional administrative tools.
+
+[![Latest Release](https://img.shields.io/github/v/release/grgks/appointment-system-react?color=brightgreen)](https://github.com/grgks/appointment-system-react/releases/tag/v1.0.0)
 
 👉 **Note**: This repository contains only the **frontend** part of the system.  
 The corresponding **backend REST API** can be found here:  
@@ -175,17 +185,17 @@ npm run allure:report
 **Allure Reports**⬇️
 <table border="0" cellpadding="0" cellspacing="0">
 <tr>
-<td><img src="./public/allure-report-overview.png" alt="allure-report-overview" width="100"" width="200"></td>
-<td><img src="./public/allure-suites.png" alt="allure-suites" width="100"" width="200"></td>
-<td><img src="./public/allure-behaviors.png" alt="allure-behaviors" width="100"" width="200"></td>
+<td><img src="./public/allure-report-overview.png" alt="allure-report-overview" width="200"></td>
+<td><img src="./public/allure-suites.png" alt="allure-suites"  width="200"></td>
+<td><img src="./public/allure-behaviors.png" alt="allure-behaviors" width="200"></td>
 </tr>
 </table>
 
 **E2E Test Reports**⬇️
 <table border="0" cellpadding="0" cellspacing="0">
 <tr>
-<td><img src="./public/E2E-Test-Report1.png" alt="allure-report-overview" width="100"" width="200"></td>
-<td><img src="./public/E2E-Test-Report2.png" alt="allure-suites" width="100"" width="200"></td>
+<td><img src="./public/E2E-Test-Report1.png" alt="allure-report-overview" width="200"></td>
+<td><img src="./public/E2E-Test-Report2.png" alt="allure-suites" width="200"></td>
 </tr>
 </table>
 
