@@ -290,7 +290,7 @@ describe('Client Tests', () => {
         alert = await driver.switchTo().alert();
         const successText = await alert.getText();
 
-        expect(successText).toContain('επιτυχής διαγραφή');
+        expect(successText).toContain('επιτυχώς');
         await alert.accept();
 
     });
