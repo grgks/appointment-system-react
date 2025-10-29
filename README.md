@@ -3,8 +3,6 @@
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.1.11-green)
 ![Vite](https://img.shields.io/badge/Vite-7.0.4-cyan)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
-[![Latest Release](https://img.shields.io/github/v/release/grgks/appointment-system-react?color=brightgreen)](https://github.com/grgks/appointment-system-react/releases)
-
 
 <table border="0" cellpadding="0" cellspacing="0">
 <tr>
