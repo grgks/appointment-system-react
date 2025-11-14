@@ -4,6 +4,10 @@
 ![Vite](https://img.shields.io/badge/Vite-7.0.4-cyan)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
+![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?logo=docker)
+![CI/CD](https://img.shields.io/badge/CI/CD-GitHub%20Actions-2088FF?logo=github-actions)
+![Security](https://img.shields.io/badge/Security-Trivy%20Scan-4B275F?logo=aqua)
+
 <table border="0" cellpadding="0" cellspacing="0">
 <tr>
 <td><img src="./public/WorkApp2.png" alt="WorkApp Logo" width="100"></td>
@@ -272,16 +276,93 @@ For complete API documentation, visit the backend Swagger UI at:
 - No localStorage usage (as per platform restrictions)
 ---
 
-##  📝Notes: 
-> This frontend application requires the backend API to be running. Please refer to the [backend repository](https://github.com/grgks/system-management-RestAPI) for setup instructions.
-> 
-> ℹ️ The current version focuses on the implementation and presentation of the React application.
-> 
->   🔹 Future improvements may include:
-> - ✅ Lighthouse reports for automated performance auditing  
-> - ✅ Automated UI tests (React Testing Library / Cypress)  
-> - ✅ CI/CD pipelines (GitHub Actions)  
-> - ✅ Dockerization for a more production-ready deployment  
+## 🐳 Docker Deployment
+
+This frontend is containerized and available as a Docker image for easy deployment.
+
+### Docker Hub
+
+**Image:** [grgks/workapp-frontend:latest](https://hub.docker.com/r/grgks/workapp-frontend)
+- **Size:** 84MB
+- **Base:** nginx:alpine
+- **Optimized:** Production build with Vite
+- **Serves:** Static assets on port 80
+
+### Quick Docker Run
+```bash
+# Pull the image
+docker pull grgks/workapp-frontend:latest
+
+# Run container
+docker run -d \
+  --name workapp-frontend \
+  -p 3000:80 \
+  grgks/workapp-frontend:latest
+```
+
+Access at: http://localhost:3000
+
+### Build Your Own Image
+```bash
+# Build from source
+docker build -t workapp-frontend .
+
+# Run locally built image
+docker run -p 3000:80 workapp-frontend
+```
+
+### Full System Deployment
+
+For complete deployment with backend and database:
+
+👉 **[WorkApp Deployment Repository](https://github.com/grgks/workapp-deployment)**
+```bash
+git clone https://github.com/grgks/workapp-deployment.git
+cd workapp-deployment
+docker-compose up -d
+```
+
+**This deployment includes:**
+- ✅ Frontend (React) on port 3000
+- ✅ Backend (Spring Boot) on port 8080
+- ✅ MySQL Database on port 3307
+- ✅ Automated initialization and health checks
+
+## 🔄 CI/CD & Security
+
+### Automated Pipeline
+
+Every push to `main` triggers:
+- ✅ Automated Docker build with Vite optimization
+- ✅ Security vulnerability scanning (Trivy)
+- ✅ Push to Docker Hub
+- ✅ GitHub Security monitoring
+
+**Workflow:** [GitHub Actions](.github/workflows/docker-build-push.yml)
+
+### Security Scanning
+
+All Docker images are automatically scanned:
+- **Scanner:** Trivy + Docker Scout
+- **Reports:** [Security tab](https://github.com/grgks/appointment-system-react/security)
+- **Status:** 0 High vulnerabilities (clean! 🎉)
+
+## 📝 Notes
+
+> ℹ️ This is a production-ready React application with comprehensive testing, Docker containerization, and CI/CD pipeline integration.
+>
+> **Implemented Features:**
+> - ✅ Lighthouse reports for automated performance auditing
+> - ✅ Automated E2E tests (Jest + Selenium WebDriver)
+> - ✅ CI/CD pipeline with automated builds and security scanning
+> - ✅ Dockerization for production-ready deployment
+>
+> **Future Enhancements:**
+> - 📧 Advanced email reminder workflows
+> - 👤 User profile settings and preferences
+> - 📊 Advanced analytics and reporting
+> - 🌐 Progressive Web App (PWA) support
+> - 📱 Mobile-optimized responsive design improvements
 ---
 
 ## License
