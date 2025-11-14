@@ -5,6 +5,10 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  contents: read
+  security-events: write
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
@@ -30,3 +34,15 @@ jobs:
           tags: grgks/workapp-frontend:latest
           cache-from: type=registry,ref=grgks/workapp-frontend:buildcache
           cache-to: type=registry,ref=grgks/workapp-frontend:buildcache,mode=max
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+            image-ref: grgks/workapp-frontend:latest
+            format: 'sarif'
+            output: 'trivy-results.sarif'
+
+      - name: Upload Trivy results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: 'trivy-results.sarif'
