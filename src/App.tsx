@@ -14,6 +14,8 @@ import EditAppointmentPage from './pages/EditAppointmentPage';
 import { useAuth } from './hooks/useAuth';
 import LoadingSpinner from './components/common/LoadingSpinner';
 import CalendarPage from "./pages/CalendarPage.tsx";
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 // Protected Route Component
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -163,6 +165,8 @@ function App() {
                     {/* 404 */}
                     <Route path="*" element={<Navigate to="/login" replace />} />
                 </Routes>
+                <Analytics />
+                <SpeedInsights />
             </div>
         </Router>
     );
