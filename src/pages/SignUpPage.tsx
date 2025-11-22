@@ -6,6 +6,7 @@ import AuthCard from '../components/common/AuthCard';
 import SignUpForm from '../components/forms/SignUpForm/SignUpForm';
 import type { SignUpRequest } from '../types/auth';
 import {usePageTitle} from "../hooks/usePageTitle.ts";
+import { API_BASE_URL, ENDPOINTS } from '../utils/constants';
 
 const SignUpPage: React.FC = () => {
     const navigate = useNavigate();
@@ -21,7 +22,7 @@ const SignUpPage: React.FC = () => {
             setLoading(true);
 
             // Registration API call
-            const response = await fetch('http://localhost:8080/api/clients/save', {
+            const response = await fetch(`${API_BASE_URL}${ENDPOINTS.CLIENTS.CREATE}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
