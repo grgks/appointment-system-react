@@ -27,6 +27,18 @@ Upcoming enhancements include **user profile settings**, advanced **email remind
 The corresponding **backend REST API** can be found here:  
 [(WorkApp Backend)](https://github.com/grgks/system-management-RestAPI)
 
+---
+## 🌐 Live Demo
+
+**Production URL:** https://appointment-system-react-one.vercel.app
+
+**Backend API:** https://system-management-restapi.onrender.com
+
+
+
+⚠️ **Note:** First API request may take 30-60 seconds (backend cold start)
+---
+
 ## 📸 Screenshots
 <table border="0" cellpadding="0" cellspacing="0">
 <tr>
@@ -327,6 +339,35 @@ docker-compose up -d
 - ✅ Backend (Spring Boot) on port 8080
 - ✅ MySQL Database on port 3307
 - ✅ Automated initialization and health checks
+
+---
+## ☁️ Production Deployment
+
+### Vercel Platform
+
+This application is deployed on **[Vercel](https://vercel.com)** with automatic deployments.
+
+**Deployment Features:**
+- ✅ Automated deployments from GitHub
+- ✅ Environment variables management
+- ✅ Automatic HTTPS & CDN
+- ✅ **Vercel Analytics** - Real-time visitor tracking
+- ✅ **Speed Insights** - Performance monitoring
+- ✅ Client-side routing support
+
+**Production URL:** https://appointment-system-react-one.vercel.app
+
+**Connected Backend:** https://system-management-restapi.onrender.com
+
+### Environment Configuration
+
+Production build uses:
+```bash
+VITE_API_BASE_URL=https://system-management-restapi.onrender.com
+```
+
+**Analytics Dashboard:** Available in Vercel project settings
+---
 
 ## 🔄 CI/CD & Security
 
