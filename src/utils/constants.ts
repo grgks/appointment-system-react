@@ -22,6 +22,10 @@ export const ENDPOINTS = {
         DELETE: '/api/appointments',
         UPCOMING: '/api/appointments/upcoming',
         REMINDER: '/api/appointments/reminder'
+    },
+    SECURITY: {
+        EVENTS: '/api/admin/security/events',
+        METRICS: '/api/admin/security/metrics'
     }
 };
 
@@ -61,7 +65,9 @@ export const GENDER_OPTIONS = {
 export const ROLE_OPTIONS = {
     CLIENT: 'CLIENT',
     ADMIN: 'ADMIN',
-    EMPLOYEE: 'EMPLOYEE'
+    EMPLOYEE: 'EMPLOYEE',
+    SUPER_ADMIN: 'SUPER_ADMIN'
+
 };
 
 // Appointment status options
