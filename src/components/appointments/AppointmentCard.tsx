@@ -122,22 +122,25 @@ const AppointmentCard: React.FC<AppointmentCardProps> = ({
 
             {/* Status and Actions */}
             <div className="mt-4 pt-4 border-t border-gray-100">
-                <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div className="flex items-center flex-wrap gap-2">
                         <Badge variant={getStatusVariant(appointment.status)}>
                             {appointment.status.charAt(0).toUpperCase() + appointment.status.slice(1)}
                         </Badge>
                         {appointment.emailReminder && !appointment.reminderSent && (
-                            <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">
+                            <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full whitespace-nowrap">
                                 Υπενθύμιση σε αναμονή
                             </span>
                         )}
                     </div>
-
                     <button
                         onClick={() => onView(appointment)}
-                        className="text-sm text-blue-600 hover:text-blue-800 font-medium transition-colors"
+                        className="text-sm text-blue-600 hover:text-blue-800 font-medium transition-colors whitespace-nowrap"
                     >
+                    {/*<button*/}
+                    {/*    onClick={() => onView(appointment)}*/}
+                    {/*    className="text-sm text-blue-600 hover:text-blue-800 font-medium transition-colors"*/}
+                    {/*>*/}
                         Λεπτομέρειες
                     </button>
                 </div>

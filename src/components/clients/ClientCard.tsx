@@ -117,8 +117,10 @@ const ClientCard: React.FC<ClientCardProps> = ({ client, onView, onEdit, onDelet
             </div>
 
             {/* Status */}
+            {/*<div className="mt-4 pt-4 border-t border-gray-100">*/}
+            {/*    <div className="flex items-center justify-between">*/}
             <div className="mt-4 pt-4 border-t border-gray-100">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-wrap items-center justify-between gap-2">
                     <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-medium ${
                         isActive
                             ? 'bg-green-100 text-green-800'
@@ -127,9 +129,13 @@ const ClientCard: React.FC<ClientCardProps> = ({ client, onView, onEdit, onDelet
                         {isActive ? 'Active' : 'Inactive'}
                     </span>
 
+                    {/*<button*/}
+                    {/*    onClick={() => onView(client)}*/}
+                    {/*    className="text-sm text-blue-600 hover:text-blue-800 font-medium transition-colors"*/}
+                    {/*>*/}
                     <button
                         onClick={() => onView(client)}
-                        className="text-sm text-blue-600 hover:text-blue-800 font-medium transition-colors"
+                        className="text-sm text-blue-600 hover:text-blue-800 font-medium transition-colors whitespace-nowrap"
                     >
                         Δες λεπτομέρειες
                     </button>

@@ -16,6 +16,8 @@ import LoadingSpinner from './components/common/LoadingSpinner';
 import CalendarPage from "./pages/CalendarPage.tsx";
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
+import SecurityDashboardPage from "./pages/SecurityDashboardPage.tsx";
+import SecurityCrudLogPage from "./pages/SecurityCrudLogPage.tsx";
 
 // Protected Route Component
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -81,6 +83,25 @@ function App() {
                         element={
                             <ProtectedRoute>
                                 <DashboardPage />
+                            </ProtectedRoute>
+                        }
+                    />
+                    {/*  Security Dashboard Route */}
+                    <Route
+                        path="/security"
+                        element={
+                            <ProtectedRoute>
+                                <SecurityDashboardPage />
+                            </ProtectedRoute>
+                        }
+                    />
+
+                    {/* CRUD Logs Route - ΝΕΟ! */}
+                    <Route
+                        path="/security/crud-logs"
+                        element={
+                            <ProtectedRoute>
+                                <SecurityCrudLogPage />
                             </ProtectedRoute>
                         }
                     />

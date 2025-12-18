@@ -7,6 +7,7 @@ interface StatCardProps {
     changeType?: 'positive' | 'negative' | 'neutral';
     icon?: React.ReactNode;
     loading?: boolean;
+    valueClassName?: string;  //
 }
 
 const StatCard: React.FC<StatCardProps> = ({
@@ -15,7 +16,8 @@ const StatCard: React.FC<StatCardProps> = ({
                                                change,
                                                changeType = 'neutral',
                                                icon,
-                                               loading = false
+                                               loading = false,
+                                               valueClassName
                                            }) => {
     const changeColors = {
         positive: 'text-green-600 bg-green-50',
@@ -50,7 +52,8 @@ const StatCard: React.FC<StatCardProps> = ({
             </div>
 
             <div className="flex items-baseline space-x-2">
-                <p className="text-2xl font-bold text-gray-900">{value}</p>
+                {/*<p className="text-2xl font-bold text-gray-900">{value}</p>*/}
+                <p className={`text-2xl font-bold ${valueClassName || 'text-gray-900'}`}>{value}</p>
                 {change && (
                     <span className={`text-xs px-2 py-1 rounded-full ${changeColors[changeType]}`}>
             {change}

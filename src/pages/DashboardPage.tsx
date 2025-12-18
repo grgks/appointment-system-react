@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plus } from 'lucide-react';
+import {Plus} from 'lucide-react';
 import { useDashboard } from '../hooks/useDashboard.ts';
 import { useAuth } from '../hooks/useAuth';
 import DashboardStats from '../components/dashboard/DashboardStats';
@@ -10,6 +10,7 @@ import UpcomingAppointments from '../components/dashboard/UpcomingAppointments';
 import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
 import {usePageTitle} from "../hooks/usePageTitle.ts";
+import { ROLE_OPTIONS } from '../utils/constants';  // ⬅️ ΠΡΟΣΘΗΚΗ
 
 const DashboardPage: React.FC = () => {
     const { data: dashboardData, loading, error, refetch } = useDashboard();
@@ -17,6 +18,17 @@ const DashboardPage: React.FC = () => {
     const navigate = useNavigate();
 
     usePageTitle("WorkApp Αρχική Σελίδα");
+
+    //show if admin security dashboard.else nothing
+    const isAdmin = () => {
+        const role = user?.role?.toUpperCase() || '';
+        return role.includes(ROLE_OPTIONS.ADMIN) ||
+            role.includes(ROLE_OPTIONS.SUPER_ADMIN);
+    };
+
+    const handleSecurityDashboard = () => {
+        navigate('/security');
+    };
 
     const handleLogout = () => {
         logout();
@@ -27,7 +39,7 @@ const DashboardPage: React.FC = () => {
         navigate('/clients/create');
     };
 
-    //Navigation  for appointments
+    //Navigation for appointments
     const handleAppointmentClick = (appointmentId: number) => {
         navigate(`/appointments/${appointmentId}/view`);
     };
@@ -115,8 +127,8 @@ const DashboardPage: React.FC = () => {
                             stats={dashboardData?.stats}
                             loading={loading}
                             onViewAllAppointments={handleViewAllAppointments}
+                            onSecurityDashboard={isAdmin() ? handleSecurityDashboard : undefined}  // ← USE isAdmin() / security Dashboasrd
                         />
-
                         {/* Quick Actions */}
                         <QuickActions
                             onCreateAppointment={handleCreateAppointment}

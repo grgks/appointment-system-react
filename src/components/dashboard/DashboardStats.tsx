@@ -1,18 +1,21 @@
 import React from 'react';
-import { Calendar, Users, Clock, CheckCircle, ArrowRight } from 'lucide-react';
+import {Calendar, Users, Clock, CheckCircle, ArrowRight} from 'lucide-react';
 import StatCard from '../ui/StatCard.tsx';
 import type { DashboardStats as DashboardStatsType } from '../../types/dashboard';
+import SecurityMetricsPreview from "../security/SecurityMetricsPreview.tsx";
 
 interface DashboardStatsProps {
     stats?: DashboardStatsType;
     loading?: boolean;
     onViewAllAppointments?: () => void;
+    onSecurityDashboard?: () => void;
 }
 
 const DashboardStats: React.FC<DashboardStatsProps> = ({
                                                            stats,
                                                            loading = false,
-                                                           onViewAllAppointments
+                                                           onViewAllAppointments,
+                                                           onSecurityDashboard
                                                        }) => {
     if (loading || !stats) {
         return (
@@ -36,6 +39,21 @@ const DashboardStats: React.FC<DashboardStatsProps> = ({
                 <h2 className="text-lg font-semibold text-gray-900 px-5">Συνοπτικά Στοιχεία :</h2>
                 <h6 className="text-center">Statistics</h6>
                 </div>
+                {/* Security Button */}
+                <div className="flex items-center gap-3">
+                    {/*{onSecurityDashboard && (*/}
+                    {/*    <button*/}
+                    {/*        onClick={onSecurityDashboard}*/}
+                    {/*        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-lg hover:from-red-600 hover:to-orange-600 transition-all duration-200 hover:shadow-lg hover:scale-105"*/}
+                    {/*    >*/}
+                    {/*        <Shield className="w-5 h-5" />*/}
+                    {/*        <span className="font-medium">Security</span>*/}
+                    {/*    </button>*/}
+                    {/*)}*/}
+                    {onSecurityDashboard && (
+                        <SecurityMetricsPreview onNavigate={onSecurityDashboard} />
+                    )}
+
                 {onViewAllAppointments && (
                     <button
                         onClick={onViewAllAppointments}
@@ -46,7 +64,7 @@ const DashboardStats: React.FC<DashboardStatsProps> = ({
                     </button>
                 )}
             </div>
-
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <StatCard
                     title="Συνολικά Ραντεβού"

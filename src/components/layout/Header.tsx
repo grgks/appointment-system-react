@@ -77,6 +77,10 @@ export const Header: React.FC<HeaderProps> = ({ onLogout }) => {
                             {/*</svg>*/}
                             <img src="/WorkApp2.png"  className=" h-22 rounded-xl shadow-lg"/>
                         </div>
+                        {/*<div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-white shadow-lg overflow-hidden">*/}
+                        {/*    <img src="/WorkApp2.png" alt="WorkApp Logo" className="w-full h-full object-contain p-1"/>*/}
+                        {/*</div>*/}
+
                         <div className="hidden sm:block">
                             <h1 className="text-xl font-bold text-white">WorkApp</h1>
                             <p className="text-xs text-white/70">Διαχείριση Πελατών & Ραντεβού</p>

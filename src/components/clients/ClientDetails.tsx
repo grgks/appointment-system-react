@@ -36,15 +36,16 @@ const ClientDetails: React.FC<ClientDetailsProps> = ({ client, onEdit, onDelete 
                         </div>
                     </div>
 
-                    <div className="flex space-x-3">
-                        <Button onClick={() => onEdit(client)} variant="outline">
+                    {/*<div className="flex space-x-3">*/}
+                    <div className="flex flex-wrap gap-2">
+                        <Button onClick={() => onEdit(client)} variant="outline" className="whitespace-nowrap">
                             <Edit className="w-4 h-4 mr-2" />
                             Ενημέρωση
                         </Button>
                         <Button
                             onClick={() => onDelete(client)}
                             variant="outline"
-                            className="text-red-600 border-red-200 hover:bg-red-50"
+                            className="text-red-600 border-red-200 hover:bg-red-50 whitespace-nowrap"
                         >
                             <Trash2 className="w-4 h-4 mr-2" />
                             Διαγραφή
