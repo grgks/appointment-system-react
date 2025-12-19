@@ -24,7 +24,7 @@ const SecurityEventsList: React.FC<SecurityEventsListProps> = ({
             title: 'Ημερομηνία / Ώρα',
             width: '180px',
             render: (value: string) => {
-                const date = new Date(value);
+                const date = new Date(value + 'Z');   // UTC Zulu time
                 return (
                     <div>
                         <div className="font-medium text-gray-900">
