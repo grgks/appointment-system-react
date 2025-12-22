@@ -16,10 +16,13 @@
 </table>
 
 This project initially started as the **Capstone Project** for [Coding Factory, Athens University of Economics and Business (AUEB)](https://codingfactory.aueb.gr/) and has since evolved into a modern, scalable React-based frontend application for managing client appointments and user administration.  
-Built with React 19, TypeScript, and TailwindCSS, it provides a clean interface for appointment scheduling, client management, and administrative tasks.  
+Built with React 19, TypeScript, and TailwindCSS, it provides a clean interface for appointment scheduling, client management, and administrative tasks , and comprehensive security monitoring. 
 
 The architecture is designed with scalability in mind, allowing for easy extension to new entities and features.  
-Upcoming enhancements include **user profile settings**, advanced **email reminder workflows**, and additional administrative tools.
+
+**Recent enhancements** include a complete **Security Audit & Monitoring System** with real-time dashboards and CRUD activity tracking.  
+
+**Upcoming features** include **user profile settings**, advanced **email reminder workflows**, and additional reporting capabilities.
 
 [![Latest Release](https://img.shields.io/github/v/release/grgks/appointment-system-react?color=brightgreen)](https://github.com/grgks/appointment-system-react/releases/tag/v1.0.0)
 
@@ -48,6 +51,14 @@ The corresponding **backend REST API** can be found here:
 <td><img src="./public/screenshot4.png" alt="WorkApp Logo" width="200"></td>
 <td><img src="./public/responsive1.png" alt="WorkApp Logo" width="150"></td>
 <td><img src="./public/responsive2.png" alt="WorkApp Logo" width="150"></td>
+</tr>
+</table>
+
+**Security Dashboard Screenshots:**
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><img src="./public/SecurityDashboard.png" alt="Security Dashboard" width="200"></td>
+<td><img src="./public/CRUDSecurity.png" alt="CRUD Activity Logs" width="200"></td>
 </tr>
 </table>
 
@@ -104,6 +115,18 @@ available under **Assets** --> **download**
 - Role-based access control (CLIENT, PATIENT, SUPER_ADMIN)
 - Secure API communication
 - Session management
+
+### 🔒 Security Audit & Monitoring System
+- Real-time security dashboard with comprehensive activity monitoring
+- Track all authentication events (logins, token errors, authorization failures)
+- Detect suspicious patterns and potential brute force attacks
+- Monitor all CRUD operations across Users, Clients, and Appointments
+- 7 security metric cards for instant security health overview
+- Dedicated CRUD Activity Logs page (`/security/crud-logs`) with filtering
+- Auto-refresh for up-to-the-minute security intelligence
+- Complete audit trail for compliance, debugging, and accountability
+- SUPER_ADMIN exclusive access for maximum security
+
 
 ### 📱 Modern UI/UX
 - Responsive design for desktop and mobile
