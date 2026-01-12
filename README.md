@@ -16,7 +16,7 @@
 </table>
 
 This project initially started as the **Capstone Project** for [Coding Factory, Athens University of Economics and Business (AUEB)](https://codingfactory.aueb.gr/) and has since evolved into a modern, scalable React-based frontend application for managing client appointments and user administration.  
-Built with React 19, TypeScript, and TailwindCSS, it provides a clean interface for appointment scheduling, client management, and administrative tasks , and comprehensive security monitoring. 
+Built with React 19, TypeScript, and TailwindCSS, it provides a clean interface for appointment scheduling, client management, administrative tasks, and comprehensive security monitoring. 
 
 The architecture is designed with scalability in mind, allowing for easy extension to new entities and features.  
 
@@ -428,6 +428,27 @@ All Docker images are automatically scanned:
 > - 🌐 Progressive Web App (PWA) support
 > - 📱 Mobile-optimized responsive design improvements
 ---
+
+## 🔒 Privacy & Data Handling
+
+This application logs the following data strictly for security purposes:
+- IP addresses
+- User-Agent strings
+- Authentication events
+- User actions (CRUD operations)
+
+**Purpose:** Security monitoring, fraud detection, audit logging, and abuse prevention
+under legitimate interest.
+
+**Retention:** Security logs are retained for up to 90 days.
+
+**Access:** Restricted to users with the SUPER_ADMIN role only.
+
+This project does not perform user tracking, profiling, or marketing analytics.
+
+For production deployments, a comprehensive Privacy Policy and GDPR compliance
+measures should be implemented.
+
 
 ## License
 
